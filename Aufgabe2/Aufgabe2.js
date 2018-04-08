@@ -1,3 +1,4 @@
+
 var Boxes;
 (function (Boxes) {
     let n = 5;
@@ -39,4 +40,4 @@ var Boxes;
         s.top = _y + "px";
     }
 })(Boxes || (Boxes = {}));
-//# sourceMappingURL=aufgabe1.js.map
+//# sourceMappingURL=Aufgabe2.js.map
