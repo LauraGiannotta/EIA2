@@ -48,10 +48,8 @@ namespace Aufgabe02 {
     
     }
     
-    
-    
     function generateCards(y:number) : void{
-        var node : any= document.getElementById("spielfeld");
+        var node : any= document.getElementById("gamefield");
         var childNodeHTML : string;
         var i : number = 0;
         

@@ -21,7 +21,7 @@ var Aufgabe02;
         console.log("Content CardList", cardList);
     }
     function generateCards(y) {
-        var node = document.getElementById("spielfeld");
+        var node = document.getElementById("gamefield");
         var childNodeHTML;
         var i = 0;
         while (i < (y * 2)) {
