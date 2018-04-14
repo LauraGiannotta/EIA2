@@ -11,10 +11,29 @@ var Memory;
     let inputPairs = prompt("Wieviele Kartenpaare von 5-10?", "");
     let inputNumPairs = parseInt(inputPairs);
     //createCard Funktion
-    function createCrads(_numPairsFinal) {
-        for (let i = 0; i > _numPairsFinal; i++) {
-            cardArray.splice(0, 0, cardContent[i]);
-            cardArray.splice(1, 0, cardContent[i]);
+    function generateCards(y) {
+        var node = document.getElementById("gamefield");
+        var childNodeHTML;
+        var i = 0;
+        while (i < (y * 2)) {
+            let min = 0;
+            let max = (cardArray.length);
+            // min = Math.ceil(min);
+            //  max = Math.floor(max);
+            var random = Math.floor(Math.random() * (max - min)) + min;
+            console.log("Card:" + i);
+            console.log(random);
+            childNodeHTML = "<div  class='card' id='Karte" + i + "'>";
+            childNodeHTML += "<p>";
+            childNodeHTML += cardArray[random];
+            childNodeHTML += "</p>";
+            childNodeHTML += " </div> ";
+            node.innerHTML += childNodeHTML;
+            console.log("L�nge Cardlist nach Generate, " + cardArray.length);
+            var content = cardArray[random];
+            var removed = cardArray.splice(random, 1);
+            console.log(cardArray);
+            i++;
         }
     }
 })(Memory || (Memory = {}));
