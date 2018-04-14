@@ -26,8 +26,7 @@ namespace Memory {
         while (i < (y*2)) {
             let min: number = 0;
         let max: number = (cardArray.length);
-            // min = Math.ceil(min);
-          //  max = Math.floor(max);
+
             var random:number=Math.floor(Math.random() * (max - min)) + min; 
             console.log("Card:" + i);
               console.log(random); 
@@ -38,7 +37,7 @@ namespace Memory {
             childNodeHTML += "</p>";
             childNodeHTML += " </div> ";      
             node.innerHTML += childNodeHTML;
-            console.log("Länge Cardlist nach Generate, " + cardArray.length)
+            console.log("Länge CardArray nach Generate, " + cardArray.length)
             var content : string = cardArray[random];  
              
             var removed = cardArray.splice(random, 1);
