@@ -1,13 +1,15 @@
 
-#gamefield div{
+#gamefield {
 	float: left;
 }
 
 .card {
-	height: 3em;
-	width: 3em;
-	background-color: red;
+	height: 5em;
+	width: 5em;
+	background-color: black;
 	margin:1em;
 	text-align: center;
-	
 }
+
+
+
