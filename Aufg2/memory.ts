@@ -8,9 +8,10 @@ namespace Memory {
      
     //Eingabe numPlayers 
     
-    function inputPlayers(): void {
-        var feld: string = prompt("Wieviele Spieler? (max.4)", "");
-  
-    }
+      let inputPlayers : string = prompt ("Anzahl der Spieler:", "");
+      let inputPlayersNum : number = parseInt (inputPlayers);
+      
+      let inputPairs : string = prompt ("Anzahl der Kartenpaare:", "");
+      let inputPairsNum : number = parseInt (inputPairs);
 
 }

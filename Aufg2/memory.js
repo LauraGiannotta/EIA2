@@ -6,8 +6,9 @@ var Memory;
     let cardContent = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J",];
     let cardArray;
     //Eingabe numPlayers 
-    function inputPlayers() {
-        var feld = prompt("Wieviele Spieler? (max.4)", "");
-    }
+    let inputPlayers = prompt("Anzahl der Spieler:", "");
+    let inputPlayersNum = parseInt(inputPlayers);
+    let inputPairs = prompt("Anzahl der Kartenpaare:", "");
+    let inputPairsNum = parseInt(inputPairs);
 })(Memory || (Memory = {}));
 //# sourceMappingURL=memory.js.map
