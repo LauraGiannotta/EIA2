@@ -93,7 +93,7 @@ namespace Aufg2 {
         function spielerDiv(_numPlayers: number): void {
                         
             let playerDiv: HTMLDivElement = document.createElement("div");
-            document.getElementById("scoreboard").appendChild(playerDiv);
+            document.getElementById("gameinfo").appendChild(playerDiv);
        
             let player: HTMLParagraphElement = document.createElement("p");
             playerDiv.appendChild(player);

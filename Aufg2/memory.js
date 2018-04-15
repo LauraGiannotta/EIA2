@@ -68,7 +68,7 @@ var Aufg2;
         //Anzeigen der Spielerboxen
         function spielerDiv(_numPlayers) {
             let playerDiv = document.createElement("div");
-            document.getElementById("scoreboard").appendChild(playerDiv);
+            document.getElementById("gameinfo").appendChild(playerDiv);
             let player = document.createElement("p");
             playerDiv.appendChild(player);
             player.innerHTML = "Spieler " + _numPlayers;
