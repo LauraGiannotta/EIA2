@@ -22,7 +22,7 @@ var Aufgabe02;
     }
     //generateCards Funktion
     function generateCards(y) {
-        var node = document.getElementById("spielfeld");
+        var node = document.getElementById("gamefield");
         var childNodeHTML;
         var i = 0;
         while (i < (y * 2)) {
