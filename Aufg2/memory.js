@@ -1,83 +1,57 @@
-var Aufg2;
-(function (Aufg2) {
-    let numPairs;
-    let numPlayers = 1;
-    let cardContent = ["Aal", "Barsch", "Clownfisch", "Delfin", "Ente", "Falterfisch", "Gelbflosse", "Haifisch"];
-    let cardArray = [];
-    //Objekt f�r Karte
-    class Card {
-        constructor(_cardContent) {
-            this.cardContent = _cardContent;
-            //Zuf�llige Zuweisung der Memorykarten
-            let randomStatus = Math.random() * 101;
-            if (randomStatus <= 55) {
-                this.cardStatus = "hidden";
-            }
-            else if (randomStatus > 55 && randomStatus <= 77) {
-                this.cardStatus = "taken";
-            }
-            else if (randomStatus > 77) {
-                this.cardStatus = "open";
-            }
+var Aufgabe02;
+(function (Aufgabe02) {
+    var infolist = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
+    var cardArray = [];
+    function inputPairs() {
+        let pairs = prompt("Wie viele Kartenpaare von 5-10?", "");
+        let pairSum = parseInt(pairs);
+        return pairSum;
+    }
+    let amount = inputPairs();
+    console.log("L�nge Infolist", infolist.length);
+    console.log("Content Infolist", infolist);
+    function shuffelAray(x) {
+        for (let i = 1; i <= x; i++) {
+            var content = infolist[0];
+            cardArray.push(content);
+            cardArray.push(content);
+            var removed = infolist.splice(0, 1);
         }
-        //createCard Funktion erstellen   
-        createCard() {
-            this.card = document.createElement("div");
-            this.card.innerText = this.cardContent;
-            this.card.setAttribute("class", "card " + this.cardStatus);
-            cardArray.push(this.card);
-            return cardArray;
+        console.log("Content cardArray", cardArray);
+    }
+    function generateCards(y) {
+        var node = document.getElementById("gamefield");
+        var childNodeHTML;
+        var i = 0;
+        while (i < (y * 2)) {
+            let min = 0;
+            let max = (cardArray.length);
+            // min = Math.ceil(min);
+            //  max = Math.floor(max);
+            var random = Math.floor(Math.random() * (max - min)) + min;
+            console.log("Card:" + i);
+            console.log(random);
+            childNodeHTML = "<div  class='card' id='Karte" + i + "'>";
+            childNodeHTML += "<p>";
+            childNodeHTML += cardArray[random];
+            childNodeHTML += "</p>";
+            childNodeHTML += " </div> ";
+            node.innerHTML += childNodeHTML;
+            console.log("L�nge cardArray nach Generate, " + cardArray.length);
+            var content = cardArray[random];
+            var removed = cardArray.splice(random, 1);
+            console.log(cardArray);
+            i++;
         }
     }
-    // Main Funktion zum Anzeigen der Spielerinfo und dem Memory
+    // Hauptprogramm
     function main() {
-        //Popup f�r Kartenpaare
-        numPairs = parseInt(prompt("Wieviele Kartenpaare von 5-8?"), 10);
-        if (numPairs < 5 || numPairs > 8) {
-            numPairs = 8;
-        }
-        //Karten erzeugen
-        for (let i = 0; i < numPairs; i++) {
-            let card = new Card(cardContent[i]);
-            card.createCard();
-            let pair = new Card(cardContent[i]);
-            pair.createCard();
-        }
-        //Popup f�r Spieleranzahl
-        let eingabeSpieler = prompt("Spieleranzahl eingeben (max. 4 Spieler)" + "");
-        //Initialisierung der verschiedenen F�lle der Spieleranzahl
-        switch (eingabeSpieler) {
-            case "1":
-                numPlayers += 1;
-                break;
-            case "2":
-                numPlayers += 2;
-                break;
-            case "3":
-                numPlayers += 3;
-                break;
-            case "4":
-                numPlayers += 4;
-                break;
-            default:
-                location.reload();
-        }
-        for (let i = 1; i < numPlayers; i++) {
-            spielerDiv(i);
-        }
-        //Anzeigen der Spielerboxen
-        function spielerDiv(_numPlayers) {
-            let playerDiv = document.createElement("div");
-            document.getElementById("gameinfo").appendChild(playerDiv);
-            let player = document.createElement("p");
-            playerDiv.appendChild(player);
-            player.innerHTML = "Spieler " + _numPlayers;
-            let points = document.createElement("p");
-            playerDiv.appendChild(points);
-            points.innerHTML = "Punkte: 00";
-        }
+        shuffelAray(amount);
+        console.log("main");
+        // Content erzeugen
+        generateCards(amount);
     }
-    //Event-Listener
-    document.addEventListener("DOMContentLoaded", main);
-})(Aufg2 || (Aufg2 = {}));
+    // Add EventListener 
+    document.addEventListener('DOMContentLoaded', main);
+})(Aufgabe02 || (Aufgabe02 = {}));
 //# sourceMappingURL=memory.js.map
