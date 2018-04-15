@@ -36,9 +36,7 @@ h2 {
   box-sizing: border-box;
   margin-left: 20%;
 }
-#card-field h2 {
-  color: white;
-}
+
 #card-div {
   position: relative;
   height: auto;
@@ -70,8 +68,7 @@ h2 {
   left: 0;
   bottom: 0;
   right: 0;
-  background: #808080;
-  border-radius: 5px;
+  background: #800040;
   transition: all 1s ease;
   transform: rotateY(180deg);
   -webkit-transform-style: preserve-3d;
