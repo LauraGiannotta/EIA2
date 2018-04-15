@@ -1,7 +1,7 @@
 var Memory;
 (function (Memory) {
     // Variablen deklarieren
-    let cardContent = ["Aal", "Barsch", "Clownfisch", "Delfin", "Haifisch", "Igelfisch", "Jagtfisch"];
+    let cardContent = ["Aal", "Barsch", "Clownfisch", "Delfin", "Ente", "Forelle", "Googlefisch", "Hifisch", "Igelfisch", "Jagdfisch"];
     let cardArray = [];
     let numPairs;
     let numPlayers;

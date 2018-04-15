@@ -1,7 +1,7 @@
 namespace Memory {
 
       // Variablen deklarieren
-      let cardContent: string[] = ["Aal", "Barsch", "Clownfisch", "Delfin", "Haifisch", "Igelfisch", "Jagtfisch"];
+      let cardContent: string[] = ["Aal", "Barsch", "Clownfisch", "Delfin", "Ente", "Forelle", "Googlefisch", "Hifisch", "Igelfisch", "Jagdfisch"];
       let cardArray: HTMLElement[] = [];
       let numPairs: number;
       let numPlayers: number;
