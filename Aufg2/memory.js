@@ -1,33 +1,33 @@
 var Aufgabe02;
 (function (Aufgabe02) {
-    var infolist = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
+    //Variablen deklarieren
+    var cardContent = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
     var cardArray = [];
+    //Eingabefelder
     function inputPairs() {
-        let pairs = prompt("Wie viele Kartenpaare von 5-10?", "");
+        let pairs = prompt("Wie viele Kartenpaare von 5-10?");
         let pairSum = parseInt(pairs);
         return pairSum;
     }
     let amount = inputPairs();
-    console.log("L�nge Infolist", infolist.length);
-    console.log("Content Infolist", infolist);
+    //Zuf�llige Spielkarten
     function shuffelAray(x) {
         for (let i = 1; i <= x; i++) {
-            var content = infolist[0];
+            var content = cardContent[0];
             cardArray.push(content);
             cardArray.push(content);
-            var removed = infolist.splice(0, 1);
+            var removed = cardContent.splice(0, 1);
         }
         console.log("Content cardArray", cardArray);
     }
+    //generateCards Funktion
     function generateCards(y) {
-        var node = document.getElementById("gamefield");
+        var node = document.getElementById("spielfeld");
         var childNodeHTML;
         var i = 0;
         while (i < (y * 2)) {
             let min = 0;
             let max = (cardArray.length);
-            // min = Math.ceil(min);
-            //  max = Math.floor(max);
             var random = Math.floor(Math.random() * (max - min)) + min;
             console.log("Card:" + i);
             console.log(random);
