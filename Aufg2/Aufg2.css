@@ -1,83 +1,47 @@
-* {
-  margin: 0;
-  padding: 0;
+html {
+	background-color: #fff9b7;
 }
 
-body {
-  font-size: 18px;
- }
- 
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
+.namen {
+	display: inline;
+	padding: 7%;
 }
 
-/* Spielinfo */
-#player-info {
-  height: 100vh;
-  width: 22%;
-  padding: 20px;
-  box-sizing: border-box;
+header{
+	background-color: #FFF;
+	padding: 1em;
 }
 
-#player-info div {
-  margin-bottom: 40px;
-  text-align: center;
-}
-#player-info div span {
-  display: block;
-}
-
-/* Spielbrett */
-#card-field {
-  height: auto;
-  max-width: 78%;
-  padding: 20px;
-  box-sizing: border-box;
-  margin-left: 20%;
+.cardhidden{
+	background-color: #e1d200;
+	color: #e1d200;
+	float: left;
+	height: 5em;
+	width: 5em;
+	margin: 1.5em;
+	text-align: center;
+	padding: 2em;
 }
 
-#card-div {
-  position: relative;
-  height: auto;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  perspective: 1500;
+.cardtaken {
+	background-color: #fff9b7;
+	color: #fff9b7;
+	border: black;
+	float: left;
+	height: 5em;
+	width: 5em;
+	margin: 1.5em;
+	text-align: center;
+	padding: 2em;
 }
-.card {
-  height: 175px;
-  width: 175px;
-  border-radius: 5px;
-  margin: 0px 20px 20px 0px;
-  cursor: pointer;
-  text-align: center;
-  line-height: 175px;
-  position: relative;
-  background: white;
-  transition: all 1s ease-in-out;
-  -webkit-transform-style: preserve-3d;
-  -webkit-backface-visibility: hidden;
-  pointer-events: auto;
-}
-.card::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  background: #800040;
-  transition: all 1s ease;
-  transform: rotateY(180deg);
-  -webkit-transform-style: preserve-3d;
-  -webkit-backface-visibility: hidden;
-  pointer-events: none;
-}
-.hidden {
-  transform: rotateY(180deg);
-}
-.taken {
-  transform: scale(0);
+
+.cardvisible{
+	float: left;
+	height: 5em;
+	width: 5em;
+	background-color:#e1d200;
+	margin: 1.5em;
+	text-align: center;
+	padding: 2em;
+	color: #FFF;
 }

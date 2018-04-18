@@ -1,83 +1,98 @@
 var Memory;
 (function (Memory) {
-    // Variablen deklarieren
-    let cardContent = ["Aal", "Barsch", "Clownfisch", "Delfin", "Ente", "Forelle", "Googlefisch", "Hifisch", "Igelfisch", "Jagdfisch"];
-    let cardArray = [];
-    let numPairs;
+    //Variablen deklarieren
     let numPlayers;
-    let playerInfo;
-    let cardField;
-    function createCard(_cardContent, _state) {
-        let card = document.createElement("div");
-        card.innerText = _cardContent;
-        card.setAttribute("class", "card " + _state);
-        cardArray.push(card);
+    let numPairs;
+    let cardContent = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
+    let cardPush = [];
+    var numPairsInt;
+    var numPlayerInt;
+    document.addEventListener('DOMContentLoaded', main);
+    function main() {
+        player();
+        creatCardList(numPairsInt);
+        enterName(numPlayerInt);
+        creatCards(numPairsInt);
     }
-    /******** Dieser Part wurde von Melvin Busch �bernommen, da wir nicht wissen, wie es anders gel�st werden kann *********/
-    class Player {
-        constructor(_name) {
-            this.name = _name;
-            this.score = 0;
+    //Spieleranzahl
+    function player() {
+        var numPlayer = prompt("Gew�nschte Anzahl der Spieler   min. 1 | max. 4", "");
+        numPlayerInt = parseInt(numPlayer);
+        if (numPlayerInt >= 1 && numPlayerInt <= 4) {
+            return numPlayerInt;
         }
-        scoreUp() {
-            this.score += 10;
-            return this.score;
-        }
-        show() {
-            this.player = document.createElement("div");
-            this.player.innerHTML = `
-              <span class="player-name">${this.name}</span>
-              <span class="player-score">Punkte: ${this.score}</span>`;
-            playerInfo.appendChild(this.player);
+        else {
+            alert("Deine Zahl liegt nicht zwischen 1 und 4");
+            player();
         }
     }
-    /*************** Part Ende *************/
-    // Zufalls Kartenpaare
-    function randomMix(_array) {
-        for (let i = _array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [_array[i], _array[j]] = [_array[j], _array[i]];
+    //Kartenpaare
+    function pair() {
+        var numPairs = prompt("Gew�nschte Anzahl der Kartenpaare   min. 1 | max. 10");
+        numPairsInt = parseInt(numPairs);
+        if (numPairsInt >= 1 && numPairsInt <= 10) {
+            return numPairsInt;
         }
-        return _array;
+        else {
+            alert("Deine Zahl liegt nicht zwischen 1 und 10");
+            pair();
+        }
     }
-    function randomState() {
-        let randomState = Math.random();
-        if (randomState <= .5) {
+    let amount = pair();
+    //Spielernamen erstellen
+    function enterName(_numPlayer) {
+        let node = document.getElementById("spielernamen");
+        let childNodeHTML;
+        for (let i = 0; i < _numPlayer; i++) {
+            childNodeHTML = "<p class='namen'>";
+            childNodeHTML += "spieler " + (i + 1);
+            childNodeHTML += "</p>";
+            node.innerHTML += childNodeHTML;
+        }
+    }
+    //Inhalt erstellen
+    function creatCardList(x) {
+        for (let i = 1; i <= x; i++) {
+            var content = cardContent[0];
+            cardPush.push(content);
+            cardPush.push(content);
+            var remove = cardContent.splice(0, 1);
+        }
+        console.log(cardPush);
+    }
+    //Karten erstellen
+    function creatCards(_numPairs) {
+        let node = document.getElementById("spielfeld");
+        let childNodeHTML;
+        let i = 0;
+        for (let i = 0; i < _numPairs * 2; i++) {
+            let min = 0;
+            let max = (cardPush.length * 2);
+            let randomeStatusFinal = randomStatus();
+            var random = Math.floor(Math.random() * cardPush.length);
+            console.log(random);
+            childNodeHTML = "<div  class='card" + randomeStatusFinal + "' id='Karte" + i + "'>";
+            childNodeHTML += "<h3>";
+            childNodeHTML += cardPush[random];
+            childNodeHTML += "</h3>";
+            childNodeHTML += " </div> ";
+            node.innerHTML += childNodeHTML;
+            cardPush.splice(random, 1);
+        }
+        console.log(cardPush);
+    }
+    //Status der Karten
+    function randomStatus() {
+        let randomStatus = Math.random();
+        if (randomStatus <= .5) {
             return "hidden";
         }
-        else if (randomState > .5 && randomState <= .75) {
+        else if (randomStatus > .5 && randomStatus <= .75) {
             return "taken";
         }
-        else if (randomState > .75) {
+        else if (randomStatus > .75) {
             return "visible";
         }
     }
-    function main() {
-        // Eingabefleder
-        numPairs = parseInt(prompt("Wieviele Kartenpaare von 5 - 10?", ""), 10);
-        if (numPairs < 5 || numPairs > 10) {
-            numPairs = 8;
-        }
-        numPlayers = parseInt(prompt("Wieviele Spieler von 1-4?", ""), 10);
-        numPlayers > 4 ? numPlayers = 4 : numPlayers = numPlayers;
-        // DOM abh�ngige Varaiblen deklarieren
-        playerInfo = document.getElementById("infofield");
-        cardField = document.getElementById("card-div");
-        // Spielkarten erzeugen
-        for (let i = 0; i < numPairs; i++) {
-            createCard(cardContent[i], randomState());
-            createCard(cardContent[i], randomState());
-        }
-        randomMix(cardArray);
-        for (let i = 0; i < cardArray.length; i++) {
-            cardField.appendChild(cardArray[i]);
-        }
-        // Spieler Anzeige
-        for (let i = 0; i < numPlayers; i++) {
-            let player = new Player("Spieler " + (i + 1));
-            player.show();
-        }
-    }
-    document.addEventListener("DOMContentLoaded", main);
 })(Memory || (Memory = {}));
 //# sourceMappingURL=memory.js.map
