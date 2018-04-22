@@ -2,7 +2,7 @@ var Memory;
 (function (Memory) {
     let numPlayers;
     let numPairs;
-    let cardContent = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+    let cardContent = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
     let cardPush = [];
     var numPairsInt;
     var numPlayerInt;
@@ -23,7 +23,7 @@ var Memory;
     }
     //Kartenpaare
     function pair() {
-        var numPairs = prompt("Wieviele Kartenpaare von 1 bis 10?", "");
+        var numPairs = prompt("Wieviele Kartenpaare von 5 bis 10?", "");
         numPairsInt = parseInt(numPairs);
         return numPairsInt;
     }

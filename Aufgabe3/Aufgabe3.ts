@@ -1,7 +1,7 @@
 namespace Memory {
     let numPlayers: number;
     let numPairs: number;
-    let cardContent: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+    let cardContent: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
     let cardPush: string[] = [];
     var numPairsInt: number;
     var numPlayerInt: number;
@@ -30,7 +30,7 @@ namespace Memory {
 
     //Kartenpaare
     function pair(): number {
-        var numPairs: string = prompt("Wieviele Kartenpaare von 1 bis 10?", "");
+        var numPairs: string = prompt("Wieviele Kartenpaare von 5 bis 10?", "");
         numPairsInt = parseInt(numPairs);
             return numPairsInt;
     }
