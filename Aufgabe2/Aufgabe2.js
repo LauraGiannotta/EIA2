@@ -1,4 +1,3 @@
-
 var Boxes;
 (function (Boxes) {
     let n = 5;

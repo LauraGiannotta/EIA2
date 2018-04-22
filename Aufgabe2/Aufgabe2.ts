@@ -6,7 +6,7 @@ namespace Boxes {
 
     for (let i: number = 0; i < n; i++) {
         y += (i == 2) ? 20 : 50;
-        x = (x + 170) % 400;
+        x = (x + 170) % 400; 
         switch (i) {
             case 0:
                 c = "#ff0000";
