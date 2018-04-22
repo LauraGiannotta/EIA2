@@ -24,6 +24,7 @@
 }
 
 
+
 .taken {
 	float: left; 
 	height: 5em; 
@@ -38,3 +39,4 @@
 .cardtaken h3 {
 	display:none;
 }
+
