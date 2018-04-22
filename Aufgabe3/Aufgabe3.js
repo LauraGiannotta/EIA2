@@ -5,38 +5,28 @@ var Memory;
     let numPairs;
     let cardContent = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
     let cardPush = [];
+    var open = [];
+    let openCard = 0;
     var numPairsInt;
     var numPlayerInt;
     document.addEventListener('DOMContentLoaded', main);
     function main() {
         player();
-        creatCardList(numPairsInt);
+        createCardList(numPairsInt);
         enterName(numPlayerInt);
-        creatCards(numPairsInt);
+        createCards(numPairsInt);
     }
     //Spieleranzahl
     function player() {
-        var numPlayer = prompt("Gew�nschte Anzahl der Spieler   min. 1 | max. 4", "");
+        var numPlayer = prompt("Gew�nschte Anzahl der Spieler   von 1 bis 4", "");
         numPlayerInt = parseInt(numPlayer);
-        if (numPlayerInt >= 1 && numPlayerInt <= 4) {
-            return numPlayerInt;
-        }
-        else {
-            alert("Deine Zahl liegt nicht zwischen 1 und 4");
-            player();
-        }
+        return numPlayerInt;
     }
     //Kartenpaare
     function pair() {
-        var numPairs = prompt("Gew�nschte Anzahl der Kartenpaare   min. 1 | max. 10");
+        var numPairs = prompt("Gew�nschte Anzahl der Kartenpaare von 1 bis 4");
         numPairsInt = parseInt(numPairs);
-        if (numPairsInt >= 1 && numPairsInt <= 10) {
-            return numPairsInt;
-        }
-        else {
-            alert("Deine Zahl liegt nicht zwischen 1 und 10");
-            pair();
-        }
+        return numPairsInt;
     }
     let amount = pair();
     //Spielernamen erstellen
@@ -51,7 +41,7 @@ var Memory;
         }
     }
     //Inhalt erstellen
-    function creatCardList(x) {
+    function createCardList(x) {
         for (let i = 1; i <= x; i++) {
             var content = cardContent[0];
             cardPush.push(content);
@@ -61,7 +51,7 @@ var Memory;
         console.log(cardPush);
     }
     //Karten erstellen
-    function creatCards(_numPairs) {
+    function createCards(_numPairs) {
         let node = document.getElementById("spielfeld");
         let childNodeHTML;
         let i = 0;
@@ -78,8 +68,25 @@ var Memory;
             childNodeHTML += " </div> ";
             node.innerHTML += childNodeHTML;
             cardPush.splice(random, 1);
+            addEventListener("click", clickHandler);
+            i++;
         }
         console.log(cardPush);
+    }
+    function clickHandler(_event) {
+        console.log(_event.target);
+        let status = _event.target;
+        if (status.classList.contains("card")) {
+            status.classList.add("open");
+            openCard++;
+            if (openCard == 2) {
+                setTimeout(open, 2000);
+            }
+            if (openCard > 2) {
+                status.classList.remove("open");
+                status.classList.add("hidden");
+            }
+        }
     }
 })(Memory || (Memory = {}));
 //# sourceMappingURL=Aufgabe3.js.map

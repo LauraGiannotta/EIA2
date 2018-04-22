@@ -5,6 +5,10 @@ namespace Memory {
     let numPairs: number;
     let cardContent: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
     let cardPush: string[] = [];
+    
+    var open:HTMLDivElement[]=[];
+    let openCard: number = 0; 
+    
     var numPairsInt: number;
     var numPlayerInt: number;
    
@@ -13,45 +17,30 @@ namespace Memory {
 
     function main(): void {
         player();
-        creatCardList(numPairsInt);
+        createCardList(numPairsInt);
         enterName(numPlayerInt);
-        creatCards(numPairsInt);
+        createCards(numPairsInt);
     }
 
 
     //Spieleranzahl
     function player(): number {
-        var numPlayer: string = prompt("Gewünschte Anzahl der Spieler   min. 1 | max. 4", "");
+        var numPlayer: string = prompt("Gewünschte Anzahl der Spieler   von 1 bis 4", "");
         numPlayerInt = parseInt(numPlayer);
-
-        if (numPlayerInt >= 1 && numPlayerInt <= 4) {
             return numPlayerInt;
-        }
-        else {
-            alert("Deine Zahl liegt nicht zwischen 1 und 4");
-            player();
-        }
-    }
+         }
 
 
 
     //Kartenpaare
     function pair(): number {
-        var numPairs: string = prompt("Gewünschte Anzahl der Kartenpaare   min. 1 | max. 10");
+        var numPairs: string = prompt("Gewünschte Anzahl der Kartenpaare von 1 bis 4");
         numPairsInt = parseInt(numPairs);
-
-        if (numPairsInt >= 1 && numPairsInt <= 10) {
             return numPairsInt;
-        }
-        else {
-            alert("Deine Zahl liegt nicht zwischen 1 und 10");
-            pair();
-        }
-
     }
+
+    
     let amount: number = pair();
-
-
 
     //Spielernamen erstellen
     function enterName(_numPlayer: number): void {
@@ -70,7 +59,7 @@ namespace Memory {
 
 
     //Inhalt erstellen
-    function creatCardList(x: number): void {
+    function createCardList(x: number): void {
         for (let i: number = 1; i <= x; i++) {
             var content: string = cardContent[0];
             cardPush.push(content);
@@ -84,7 +73,7 @@ namespace Memory {
 
 
     //Karten erstellen
-    function creatCards(_numPairs: number): void {
+    function createCards(_numPairs: number): void {
         let node: any = document.getElementById("spielfeld");
         let childNodeHTML: string;
         let i: number = 0;
@@ -105,11 +94,37 @@ namespace Memory {
             node.innerHTML += childNodeHTML;
             
             cardPush.splice(random, 1)
+            
+            addEventListener("click", clickHandler)
+            i++;
         }
         console.log(cardPush)
     }
 
+       function clickHandler(_event: MouseEvent): void {
+           console.log(_event.target);
+           let status : HTMLElement = <HTMLElement>_event.target;
 
+           if (status.classList.contains("card")) {  
+               status.classList.add("open");                   
+        openCard ++;                                                           
+            
+
+        if (openCard == 2) {                                                  
+            setTimeout(open, 2000);                                    
+        }
+
+        if (openCard > 2) {                                                    
+            status.classList.remove("open");
+            status.classList.add("hidden");
+        }
+    }
+       }
+
+     
+     
+        
+    
 /*
     //Status der Karten
     function randomStatus(): string {
@@ -124,4 +139,5 @@ namespace Memory {
     }
 */
     
+
 }
