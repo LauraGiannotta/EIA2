@@ -16,12 +16,12 @@
 	margin: 1.5em; 
 	text-align: center; 
 	padding: 2em; 
+	
 }
 
 .hidden h3 {
-	color: #8080c0;
+	display:none;
 }
-
 
 
 .taken {
@@ -36,10 +36,5 @@
 }
 
 .cardtaken h3 {
-	color: #fff;
-}
-
-
-.namen {
-	
+	display:none;
 }
