@@ -18,13 +18,13 @@ var Memory;
     }
     //Spieleranzahl
     function player() {
-        var numPlayer = prompt("Gew�nschte Anzahl der Spieler   von 1 bis 4", "");
+        var numPlayer = prompt("Wieviele Spieler von 1 bis 4?", "");
         numPlayerInt = parseInt(numPlayer);
         return numPlayerInt;
     }
     //Kartenpaare
     function pair() {
-        var numPairs = prompt("Gew�nschte Anzahl der Kartenpaare von 1 bis 4");
+        var numPairs = prompt("Wieviele Kartenpaare von 1 bis 10?", "");
         numPairsInt = parseInt(numPairs);
         return numPairsInt;
     }
@@ -58,10 +58,10 @@ var Memory;
         for (let i = 0; i < _numPairs * 2; i++) {
             let min = 0;
             let max = (cardPush.length * 2);
-            /*     let randomeStatusFinal : string = randomStatus()*/
+            //    let randomeStatusFinal : string = randomStatus()
             var random = Math.floor(Math.random() * cardPush.length);
             console.log(random);
-            /*   childNodeHTML = "<div  class='card" + randomeStatusFinal + "' id='Karte" + i + "'>"; */
+            //   childNodeHTML = "<div  class='card" + randomeStatusFinal + "' id='Karte" + i + "'>"; 
             childNodeHTML += "<h3>";
             childNodeHTML += cardPush[random];
             childNodeHTML += "</h3>";

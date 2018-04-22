@@ -25,7 +25,7 @@ namespace Memory {
 
     //Spieleranzahl
     function player(): number {
-        var numPlayer: string = prompt("Gewünschte Anzahl der Spieler   von 1 bis 4", "");
+        var numPlayer: string = prompt("Wieviele Spieler von 1 bis 4?", "");
         numPlayerInt = parseInt(numPlayer);
             return numPlayerInt;
          }
@@ -34,7 +34,7 @@ namespace Memory {
 
     //Kartenpaare
     function pair(): number {
-        var numPairs: string = prompt("Gewünschte Anzahl der Kartenpaare von 1 bis 4");
+        var numPairs: string = prompt("Wieviele Kartenpaare von 1 bis 10?", "");
         numPairsInt = parseInt(numPairs);
             return numPairsInt;
     }
@@ -81,12 +81,12 @@ namespace Memory {
         for (let i: number = 0; i < _numPairs * 2; i++) {
             let min: number = 0;
             let max: number = (cardPush.length * 2);
-       /*     let randomeStatusFinal : string = randomStatus()*/
+       //    let randomeStatusFinal : string = randomStatus()
           
 
             var random: number = Math.floor(Math.random() * cardPush.length);
             console.log(random)
-         /*   childNodeHTML = "<div  class='card" + randomeStatusFinal + "' id='Karte" + i + "'>"; */
+         //   childNodeHTML = "<div  class='card" + randomeStatusFinal + "' id='Karte" + i + "'>"; 
             childNodeHTML += "<h3>";
             childNodeHTML += cardPush[random];
             childNodeHTML += "</h3>";
