@@ -3,6 +3,8 @@ namespace Memory {
     let numPairs: number;
     let cardContent: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
     let cardPush: string[] = [];
+    
+    //um aus string von prompt number zu machen
     var numPairsInt: number;
     var numPlayerInt: number;
    
@@ -10,30 +12,40 @@ namespace Memory {
     let open: HTMLElement[] = [];
 
     document.addEventListener('DOMContentLoaded', main);
- 
+
+    //Wenn Dokument geladen werden Funktionen ausgeführt    
     
-        function main(): void {
+    function main(): void {
         player();
         createCardList(numPairsInt);
         enterName(numPlayerInt);
         createCards(numPairsInt);
     }
 
+    
     //Spieleranzahl
     function player(): number {
         var numPlayer: string = prompt("Wieviele Spieler von 1 bis 4?", "");
         numPlayerInt = parseInt(numPlayer);
+        
+            if (numPlayerInt >= 1 && numPlayerInt <=4) {
+            
             return numPlayerInt;
          }
-
-
+        
+            else {alert("Zahl ungültig!");}
+        }
 
     //Kartenpaare
     function pair(): number {
         var numPairs: string = prompt("Wieviele Kartenpaare von 5 bis 10?", "");
         numPairsInt = parseInt(numPairs);
+        
+          if (numPlayerInt >= 1 && numPlayerInt <=4) {
             return numPairsInt;
     }
+                    else {alert("Zahl ungültig!");}
+        }
 
 
     let amount: number = pair();

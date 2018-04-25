@@ -4,11 +4,13 @@ var Memory;
     let numPairs;
     let cardContent = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
     let cardPush = [];
+    //um aus string von prompt number zu machen
     var numPairsInt;
     var numPlayerInt;
     let openCard = 0;
     let open = [];
     document.addEventListener('DOMContentLoaded', main);
+    //Wenn Dokument geladen werden Funktionen ausgef�hrt    
     function main() {
         player();
         createCardList(numPairsInt);
@@ -19,13 +21,23 @@ var Memory;
     function player() {
         var numPlayer = prompt("Wieviele Spieler von 1 bis 4?", "");
         numPlayerInt = parseInt(numPlayer);
-        return numPlayerInt;
+        if (numPlayerInt >= 1 && numPlayerInt <= 4) {
+            return numPlayerInt;
+        }
+        else {
+            alert("Zahl ung�ltig!");
+        }
     }
     //Kartenpaare
     function pair() {
         var numPairs = prompt("Wieviele Kartenpaare von 5 bis 10?", "");
         numPairsInt = parseInt(numPairs);
-        return numPairsInt;
+        if (numPlayerInt >= 1 && numPlayerInt <= 4) {
+            return numPairsInt;
+        }
+        else {
+            alert("Zahl ung�ltig!");
+        }
     }
     let amount = pair();
     //Spielernamen erstellen
