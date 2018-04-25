@@ -4,7 +4,7 @@ var Memory;
     let emptyArray = [];
     //um aus string von prompt number zu machen
     let numPairs;
-    let numPlayerInt;
+    let numPlayer;
     let openCard = 0;
     let open = [];
     let takenCards = 0;
@@ -13,18 +13,19 @@ var Memory;
     function main() {
         player();
         createCardList(numPairs);
-        createPlayers(numPlayerInt);
+        createPlayers(numPlayer);
         createCards(numPairs);
     }
     //Spieleranzahl
     function player() {
         var numPlayerString = prompt("Wieviele Spieler von 1 bis 4?", "");
-        numPlayerInt = parseInt(numPlayerString);
-        if (numPlayerInt >= 1 && numPlayerInt <= 4) {
-            return numPlayerInt;
+        numPlayer = parseInt(numPlayerString);
+        if (numPlayer >= 1 && numPlayer <= 4) {
+            return numPlayer;
         }
         else {
-            alert("Zahl ung�ltig!");
+            alert("Deine Zahl liegt nicht zwischen 1 und 4");
+            player();
         }
     }
     //Kartenpaare
