@@ -37,6 +37,7 @@ var Memory;
         }
         else {
             alert("Zahl ung�ltig!");
+            pair();
         }
     }
     let amount = pair();

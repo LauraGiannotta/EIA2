@@ -47,7 +47,9 @@ namespace Memory {
           if (numPairs >= 1 && numPairs <=10) {
             return numPairs;
     }
-                    else {alert("Zahl ungültig!");}
+                    else {alert("Zahl ungültig!");
+                    pair();         
+          }
         }
 
 
