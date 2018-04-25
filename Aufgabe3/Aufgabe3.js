@@ -30,9 +30,9 @@ var Memory;
     }
     //Kartenpaare
     function pair() {
-        var numPairsString = prompt("Wieviele Kartenpaare von 5 bis 10?", "");
+        var numPairsString = prompt("Wieviele Kartenpaare von 1 bis 10?", "");
         numPairs = parseInt(numPairsString);
-        if (numPairs >= 1 && numPairs <= 4) {
+        if (numPairs >= 1 && numPairs <= 10) {
             return numPairs;
         }
         else {
