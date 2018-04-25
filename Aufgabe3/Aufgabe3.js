@@ -1,9 +1,9 @@
 var Memory;
 (function (Memory) {
     let cardContent = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
-    let cardPush = [];
+    let emptyArray = [];
     //um aus string von prompt number zu machen
-    let numPairsInt;
+    let numPairs;
     let numPlayerInt;
     let openCard = 0;
     let open = [];
@@ -11,9 +11,9 @@ var Memory;
     //Wenn Dokument geladen werden Funktionen ausgef�hrt    
     function main() {
         player();
-        createCardList(numPairsInt);
+        createCardList(numPairs);
         createPlayers(numPlayerInt);
-        createCards(numPairsInt);
+        createCards(numPairs);
     }
     //Spieleranzahl
     function player() {
@@ -29,9 +29,9 @@ var Memory;
     //Kartenpaare
     function pair() {
         var numPairsString = prompt("Wieviele Kartenpaare von 5 bis 10?", "");
-        numPairsInt = parseInt(numPairsString);
-        if (numPairsInt >= 1 && numPairsInt <= 4) {
-            return numPairsInt;
+        numPairs = parseInt(numPairsString);
+        if (numPairs >= 1 && numPairs <= 4) {
+            return numPairs;
         }
         else {
             alert("Zahl ung�ltig!");
@@ -53,14 +53,14 @@ var Memory;
         }
     }
     //Inhalt erstellen
-    function createCardList(_numPlayerInt) {
-        for (let i = 1; i <= _numPlayerInt; i++) {
+    function createCardList(_numPairs) {
+        for (let i = 1; i <= _numPairs; i++) {
             var content = cardContent[0];
-            cardPush.push(content);
-            cardPush.push(content);
-            var remove = cardContent.splice(0, 1);
+            emptyArray.push(content);
+            emptyArray.push(content);
+            cardContent.splice(0, 1);
         }
-        console.log(cardPush);
+        console.log(emptyArray);
     }
     //Karten erstellen
     function createCards(_numPairs) {
@@ -69,15 +69,15 @@ var Memory;
         let i = 0;
         for (let i = 0; i < _numPairs * 2; i++) {
             let min = 0;
-            let max = (cardPush.length);
+            let max = (emptyArray.length);
             var random = Math.floor(Math.random() * Math.floor(max));
             childNodeHTML = "<div  class='hidden" + "' id='Karte" + i + "'>";
             childNodeHTML += "<h3>";
-            childNodeHTML += cardPush[random];
+            childNodeHTML += emptyArray[random];
             childNodeHTML += "</h3>";
             childNodeHTML += " </div> ";
             node.innerHTML += childNodeHTML;
-            var remove = cardPush.splice(random, 1);
+            var remove = emptyArray.splice(random, 1);
         }
         // Karte anklickbar machen
         var status = document.getElementsByClassName("hidden");

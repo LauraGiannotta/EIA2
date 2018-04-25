@@ -1,10 +1,10 @@
 namespace Memory {
 
     let cardContent: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
-    let cardPush: string[] = [];
+    let emptyArray: string[] = [];
     
     //um aus string von prompt number zu machen
-    let numPairsInt: number;
+    let numPairs: number;
     let numPlayerInt: number;
    
     let openCard: number = 0;
@@ -16,9 +16,9 @@ namespace Memory {
     
     function main(): void {
         player();
-        createCardList(numPairsInt);
+        createCardList(numPairs);
         createPlayers(numPlayerInt);
-        createCards(numPairsInt);
+        createCards(numPairs);
     }
 
     
@@ -36,10 +36,10 @@ namespace Memory {
     //Kartenpaare
     function pair(): number {
         var numPairsString: string = prompt("Wieviele Kartenpaare von 5 bis 10?", "");
-        numPairsInt = parseInt(numPairsString);
+        numPairs = parseInt(numPairsString);
         
-          if (numPairsInt >= 1 && numPairsInt <=4) {
-            return numPairsInt;
+          if (numPairs >= 1 && numPairs <=4) {
+            return numPairs;
     }
                     else {alert("Zahl ungültig!");}
         }
@@ -69,15 +69,15 @@ namespace Memory {
 
 
     //Inhalt erstellen
-    function createCardList(_numPlayerInt: number): void {
-        for (let i: number = 1; i <= _numPlayerInt; i++) {
+    function createCardList(_numPairs: number): void {
+        for (let i: number = 1; i <= _numPairs; i++) {
             var content: string = cardContent[0];
-            cardPush.push(content);
-            cardPush.push(content);
+            emptyArray.push(content);
+            emptyArray.push(content);
 
-            var remove = cardContent.splice(0, 1);
+            cardContent.splice(0, 1);
         }
-        console.log(cardPush)
+        console.log(emptyArray)
     }
 
 
@@ -89,19 +89,19 @@ namespace Memory {
 
         for (let i: number = 0; i < _numPairs * 2; i++) {
             let min: number = 0;
-            let max: number = (cardPush.length);
+            let max: number = (emptyArray.length);
 
             var random: number = Math.floor(Math.random() * Math.floor(max));
 
 
             childNodeHTML = "<div  class='hidden" + "' id='Karte" + i + "'>";
             childNodeHTML += "<h3>";
-            childNodeHTML += cardPush[random];
+            childNodeHTML += emptyArray[random];
             childNodeHTML += "</h3>";
             childNodeHTML += " </div> ";
             node.innerHTML += childNodeHTML;
 
-            var remove = cardPush.splice(random, 1)
+            var remove = emptyArray.splice(random, 1)
 
         }
 
