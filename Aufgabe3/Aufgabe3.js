@@ -58,6 +58,7 @@ var Memory;
             var content = cardContent[0];
             emptyArray.push(content);
             emptyArray.push(content);
+            //mit Spice wird an der 0. Stelle  1e Stelle gel�scht, um das wiederholen von A zu vermeiden
             cardContent.splice(0, 1);
         }
         console.log(emptyArray);
@@ -66,62 +67,61 @@ var Memory;
     function createCards(_numPairs) {
         let node = document.getElementById("spielfeld");
         let childNodeHTML;
-        let i = 0;
         for (let i = 0; i < _numPairs * 2; i++) {
-            let min = 0;
-            let max = (emptyArray.length);
-            var random = Math.floor(Math.random() * Math.floor(max));
+            //Zuf�llige Zahl in der L�nge des Arrays wird erzeugt, um das erzeugte Array durchzumischen
+            let random = Math.floor(Math.random() * Math.floor(emptyArray.length));
             childNodeHTML = "<div  class='hidden" + "' id='Karte" + i + "'>";
             childNodeHTML += "<h3>";
             childNodeHTML += emptyArray[random];
             childNodeHTML += "</h3>";
             childNodeHTML += " </div> ";
             node.innerHTML += childNodeHTML;
-            var remove = emptyArray.splice(random, 1);
+            //wieder zum vermeiden von doppelten Inhalten
+            emptyArray.splice(random, 1);
+            // Karte anklickbar machen
+            let status = document.getElementsByClassName("hidden");
+            for (let i = 0; i < status.length; i++) {
+                status[i].addEventListener("click", changeStatus);
+            }
         }
-        // Karte anklickbar machen
-        var status = document.getElementsByClassName("hidden");
-        for (let i = 0; i < status.length; i++) {
-            status[i].addEventListener("click", changeStatus);
-        }
-        // Statuswechsel zu open
-        function changeStatus(_event) {
-            let t = _event.currentTarget;
-            if (t.className = "hidden") {
-                t.classList.remove("hidden");
-                t.classList.add("open");
-                openCard++;
-                //Timeout installieren                                        
-                if (openCard == 2) {
-                    setTimeout(compareCards, 2000);
+    }
+    // Statuswechsel zu open
+    function changeStatus(_event) {
+        let t = _event.currentTarget;
+        if (t.className = "hidden") {
+            t.classList.remove("hidden");
+            t.classList.add("open");
+            openCard++;
+            //Timeout installieren                                        
+            if (openCard == 2) {
+                setTimeout(compareCards, 2000);
+            }
+            if (openCard > 2) {
+                t.classList.remove("open");
+                t.classList.add("hidden");
+            }
+            console.log(openCard);
+            //Vergleiche Inahlt
+            function compareCards() {
+                let cardOne = document.getElementsByClassName("open")[0];
+                let cardTwo = document.getElementsByClassName("open")[1];
+                open.push(cardOne, cardTwo);
+                if (open[0].innerHTML == open[1].innerHTML) {
+                    open[0].classList.remove("open");
+                    open[0].classList.add("taken");
+                    open[1].classList.remove("open");
+                    open[1].classList.add("taken");
                 }
-                if (openCard > 2) {
-                    t.classList.remove("open");
-                    t.classList.add("hidden");
+                else {
+                    open[0].classList.remove("open");
+                    open[0].classList.add("hidden");
+                    open[1].classList.remove("open");
+                    open[1].classList.add("hidden");
                 }
-                console.log(openCard);
-                //Vergleiche Inahlt
-                function compareCards() {
-                    let cardOne = document.getElementsByClassName("open")[0];
-                    let cardTwo = document.getElementsByClassName("open")[1];
-                    open.push(cardOne, cardTwo);
-                    if (open[0].innerHTML == open[1].innerHTML) {
-                        open[0].classList.remove("open");
-                        open[0].classList.add("taken");
-                        open[1].classList.remove("open");
-                        open[1].classList.add("taken");
-                    }
-                    else {
-                        open[0].classList.remove("open");
-                        open[0].classList.add("hidden");
-                        open[1].classList.remove("open");
-                        open[1].classList.add("hidden");
-                    }
-                    //zur�ck auf 0
-                    openCard = 0;
-                    //opeList Array l�schen 
-                    open.splice(0, 2);
-                }
+                //zur�ck auf 0
+                openCard = 0;
+                //opeList Array l�schen 
+                open.splice(0, 2);
             }
         }
     }

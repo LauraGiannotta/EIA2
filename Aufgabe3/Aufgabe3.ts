@@ -75,9 +75,10 @@ namespace Memory {
             emptyArray.push(content);
             emptyArray.push(content);
 
+            //mit Spice wird an der 0. Stelle  1e Stelle gelöscht, um das wiederholen von A zu vermeiden
             cardContent.splice(0, 1);
         }
-        console.log(emptyArray)
+        console.log(emptyArray);
     }
 
 
@@ -85,13 +86,12 @@ namespace Memory {
     function createCards(_numPairs: number): void {
         let node: any = document.getElementById("spielfeld");
         let childNodeHTML: string;
-        let i: number = 0;
 
         for (let i: number = 0; i < _numPairs * 2; i++) {
-            let min: number = 0;
-            let max: number = (emptyArray.length);
+            
 
-            var random: number = Math.floor(Math.random() * Math.floor(max));
+            //Zufällige Zahl in der Länge des Arrays wird erzeugt, um das erzeugte Array durchzumischen
+            let random: number = Math.floor(Math.random() * Math.floor(emptyArray.length));
 
 
             childNodeHTML = "<div  class='hidden" + "' id='Karte" + i + "'>";
@@ -101,19 +101,17 @@ namespace Memory {
             childNodeHTML += " </div> ";
             node.innerHTML += childNodeHTML;
 
-            var remove = emptyArray.splice(random, 1)
-
-        }
-
-
-        // Karte anklickbar machen
-       
-        var status = document.getElementsByClassName("hidden")
+            //wieder zum vermeiden von doppelten Inhalten
+            emptyArray.splice(random, 1);
+            
+            
+            // Karte anklickbar machen
+            let status = document.getElementsByClassName("hidden");
             for (let i: number = 0; i<status.length; i++) {
             status[i].addEventListener("click", changeStatus);
         }
-
-        
+    }
+  }      
         // Statuswechsel zu open
         function changeStatus(_event: MouseEvent): void {
 
@@ -175,5 +173,5 @@ namespace Memory {
 
             }
         }
-    }
+    
 }
