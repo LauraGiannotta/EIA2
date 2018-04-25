@@ -78,7 +78,7 @@ var Memory;
             node.innerHTML += childNodeHTML;
             //wieder zum vermeiden von doppelten Inhalten
             emptyArray.splice(random, 1);
-            // Karte anklickbar machen
+            // Karte anklickbar machen bzw. Listener auf div mit classe hidden installiert
             let status = document.getElementsByClassName("hidden");
             for (let i = 0; i < status.length; i++) {
                 status[i].addEventListener("click", changeStatus);
@@ -87,18 +87,20 @@ var Memory;
     }
     // Statuswechsel zu open
     function changeStatus(_event) {
-        let t = _event.currentTarget;
-        if (t.className = "hidden") {
-            t.classList.remove("hidden");
-            t.classList.add("open");
+        //Variable, die schuat, was als letztes ausgew�hlt wurde, durch current.Target
+        let target = _event.currentTarget;
+        //... 
+        if (target.className = "hidden") {
+            target.classList.remove("hidden");
+            target.classList.add("open");
             openCard++;
             //Timeout installieren                                        
             if (openCard == 2) {
                 setTimeout(compareCards, 2000);
             }
             if (openCard > 2) {
-                t.classList.remove("open");
-                t.classList.add("hidden");
+                target.classList.remove("open");
+                target.classList.add("hidden");
             }
             console.log(openCard);
             //Vergleiche Inahlt

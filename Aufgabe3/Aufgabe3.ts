@@ -105,7 +105,7 @@ namespace Memory {
             emptyArray.splice(random, 1);
             
             
-            // Karte anklickbar machen
+            // Karte anklickbar machen bzw. Listener auf div mit classe hidden installiert
             let status = document.getElementsByClassName("hidden");
             for (let i: number = 0; i<status.length; i++) {
             status[i].addEventListener("click", changeStatus);
@@ -115,12 +115,13 @@ namespace Memory {
         // Statuswechsel zu open
         function changeStatus(_event: MouseEvent): void {
 
-            let t: HTMLElement = <HTMLElement>_event.currentTarget;
-
-            if (t.className = "hidden") {
-                t.classList.remove("hidden");
-                t.classList.add("open");
-                    openCard++;
+            //Variable, die schuat, was als letztes ausgewählt wurde, durch current.Target
+            let target: HTMLElement = <HTMLElement>_event.currentTarget;
+//... 
+                if (target.className = "hidden") {
+                    target.classList.remove("hidden");
+                    target.classList.add("open");
+                        openCard++;
                 
           //Timeout installieren                                        
                     if (openCard == 2) {
@@ -128,8 +129,8 @@ namespace Memory {
                     }
                 
                     if (openCard > 2) {
-                        t.classList.remove("open");
-                        t.classList.add("hidden");
+                        target.classList.remove("open");
+                        target.classList.add("hidden");
                     }
                     console.log(openCard);
 
