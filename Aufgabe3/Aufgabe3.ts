@@ -1,12 +1,11 @@
 namespace Memory {
-    let numPlayers: number;
-    let numPairs: number;
+
     let cardContent: string[] = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
     let cardPush: string[] = [];
     
     //um aus string von prompt number zu machen
-    var numPairsInt: number;
-    var numPlayerInt: number;
+    let numPairsInt: number;
+    let numPlayerInt: number;
    
     let openCard: number = 0;
     let open: HTMLElement[] = [];
@@ -18,30 +17,28 @@ namespace Memory {
     function main(): void {
         player();
         createCardList(numPairsInt);
-        enterName(numPlayerInt);
+        createPlayers(numPlayerInt);
         createCards(numPairsInt);
     }
 
     
     //Spieleranzahl
     function player(): number {
-        var numPlayer: string = prompt("Wieviele Spieler von 1 bis 4?", "");
-        numPlayerInt = parseInt(numPlayer);
+        var numPlayerString: string = prompt("Wieviele Spieler von 1 bis 4?", "");
+        numPlayerInt = parseInt(numPlayerString);
         
             if (numPlayerInt >= 1 && numPlayerInt <=4) {
-            
             return numPlayerInt;
          }
-        
             else {alert("Zahl ungültig!");}
         }
 
     //Kartenpaare
     function pair(): number {
-        var numPairs: string = prompt("Wieviele Kartenpaare von 5 bis 10?", "");
-        numPairsInt = parseInt(numPairs);
+        var numPairsString: string = prompt("Wieviele Kartenpaare von 5 bis 10?", "");
+        numPairsInt = parseInt(numPairsString);
         
-          if (numPlayerInt >= 1 && numPlayerInt <=4) {
+          if (numPairsInt >= 1 && numPairsInt <=4) {
             return numPairsInt;
     }
                     else {alert("Zahl ungültig!");}
@@ -53,23 +50,27 @@ namespace Memory {
 
 
     //Spielernamen erstellen
-    function enterName(_numPlayer: number): void {
+    function createPlayers(_numPlayerInt: number): void {
         let node: any = document.getElementById("spielernamen");
         let childNodeHTML: string;
+        
+    //Je nach Eingabe wird hier bis zu 5 mal durchgelaufen
+        for (let i: number = 0; i < _numPlayerInt; i++) {
 
-        for (let i: number = 0; i < _numPlayer; i++) {
-
-            childNodeHTML = "<p class='namen'>";
-            childNodeHTML += "spieler " + (i +1)
+            childNodeHTML = "<div>";
+            childNodeHTML += "<p class='namen'>";
+            childNodeHTML += "Player " + (i +1)
             childNodeHTML += "</p>";
+           
+            //ChildNode Inhalte werden über Node Variable ins HTML geschrieben
             node.innerHTML += childNodeHTML;
         }
     }
 
 
     //Inhalt erstellen
-    function createCardList(x: number): void {
-        for (let i: number = 1; i <= x; i++) {
+    function createCardList(_numPlayerInt: number): void {
+        for (let i: number = 1; i <= _numPlayerInt; i++) {
             var content: string = cardContent[0];
             cardPush.push(content);
             cardPush.push(content);
@@ -169,9 +170,6 @@ namespace Memory {
         open.splice(0, 2);
 
         
-     if (numPairs == 0) {
-      alert("Sehr gut! Gewonnen!");
-    }
 
         }
 

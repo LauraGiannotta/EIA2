@@ -1,12 +1,10 @@
 var Memory;
 (function (Memory) {
-    let numPlayers;
-    let numPairs;
     let cardContent = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
     let cardPush = [];
     //um aus string von prompt number zu machen
-    var numPairsInt;
-    var numPlayerInt;
+    let numPairsInt;
+    let numPlayerInt;
     let openCard = 0;
     let open = [];
     document.addEventListener('DOMContentLoaded', main);
@@ -14,13 +12,13 @@ var Memory;
     function main() {
         player();
         createCardList(numPairsInt);
-        enterName(numPlayerInt);
+        createPlayers(numPlayerInt);
         createCards(numPairsInt);
     }
     //Spieleranzahl
     function player() {
-        var numPlayer = prompt("Wieviele Spieler von 1 bis 4?", "");
-        numPlayerInt = parseInt(numPlayer);
+        var numPlayerString = prompt("Wieviele Spieler von 1 bis 4?", "");
+        numPlayerInt = parseInt(numPlayerString);
         if (numPlayerInt >= 1 && numPlayerInt <= 4) {
             return numPlayerInt;
         }
@@ -30,9 +28,9 @@ var Memory;
     }
     //Kartenpaare
     function pair() {
-        var numPairs = prompt("Wieviele Kartenpaare von 5 bis 10?", "");
-        numPairsInt = parseInt(numPairs);
-        if (numPlayerInt >= 1 && numPlayerInt <= 4) {
+        var numPairsString = prompt("Wieviele Kartenpaare von 5 bis 10?", "");
+        numPairsInt = parseInt(numPairsString);
+        if (numPairsInt >= 1 && numPairsInt <= 4) {
             return numPairsInt;
         }
         else {
@@ -41,19 +39,22 @@ var Memory;
     }
     let amount = pair();
     //Spielernamen erstellen
-    function enterName(_numPlayer) {
+    function createPlayers(_numPlayerInt) {
         let node = document.getElementById("spielernamen");
         let childNodeHTML;
-        for (let i = 0; i < _numPlayer; i++) {
-            childNodeHTML = "<p class='namen'>";
-            childNodeHTML += "spieler " + (i + 1);
+        //Je nach Eingabe wird hier bis zu 5 mal durchgelaufen
+        for (let i = 0; i < _numPlayerInt; i++) {
+            childNodeHTML = "<div>";
+            childNodeHTML += "<p class='namen'>";
+            childNodeHTML += "Player " + (i + 1);
             childNodeHTML += "</p>";
+            //ChildNode Inhalte werden �ber Node Variable ins HTML geschrieben
             node.innerHTML += childNodeHTML;
         }
     }
     //Inhalt erstellen
-    function createCardList(x) {
-        for (let i = 1; i <= x; i++) {
+    function createCardList(_numPlayerInt) {
+        for (let i = 1; i <= _numPlayerInt; i++) {
             var content = cardContent[0];
             cardPush.push(content);
             cardPush.push(content);
@@ -120,9 +121,6 @@ var Memory;
                     openCard = 0;
                     //opeList Array l�schen 
                     open.splice(0, 2);
-                    if (numPairs == 0) {
-                        alert("Sehr gut! Gewonnen!");
-                    }
                 }
             }
         }
