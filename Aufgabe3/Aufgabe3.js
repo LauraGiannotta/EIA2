@@ -7,6 +7,7 @@ var Memory;
     let numPlayerInt;
     let openCard = 0;
     let open = [];
+    let takenCards = 0;
     document.addEventListener('DOMContentLoaded', main);
     //Wenn Dokument geladen werden Funktionen ausgef�hrt    
     function main() {
@@ -78,7 +79,7 @@ var Memory;
             node.innerHTML += childNodeHTML;
             //wieder zum vermeiden von doppelten Inhalten
             emptyArray.splice(random, 1);
-            // Karte anklickbar machen bzw. Listener auf div mit classe hidden installiert
+            // Karte anklickbar machen bzw. Listener auf div mit Klasse hidden installiert
             let status = document.getElementsByClassName("hidden");
             for (let i = 0; i < status.length; i++) {
                 status[i].addEventListener("click", changeStatus);
@@ -89,43 +90,53 @@ var Memory;
     function changeStatus(_event) {
         //Variable, die schuat, was als letztes ausgew�hlt wurde, durch current.Target
         let target = _event.currentTarget;
-        //... 
-        if (target.className = "hidden") {
+        //Wenn eine Karte angeklickt wird, �ndert sich der Status von hidden zu open
+        if (target.classList.contains("hidden")) {
             target.classList.remove("hidden");
             target.classList.add("open");
+            //ab hier wird die Anzahl an offenen Karten erh�ht
             openCard++;
             //Timeout installieren                                        
             if (openCard == 2) {
                 setTimeout(compareCards, 2000);
             }
+            //noch ein klick --> erneut Statuswechsel
             if (openCard > 2) {
                 target.classList.remove("open");
                 target.classList.add("hidden");
             }
-            console.log(openCard);
-            //Vergleiche Inahlt
-            function compareCards() {
-                let cardOne = document.getElementsByClassName("open")[0];
-                let cardTwo = document.getElementsByClassName("open")[1];
-                open.push(cardOne, cardTwo);
-                if (open[0].innerHTML == open[1].innerHTML) {
-                    open[0].classList.remove("open");
-                    open[0].classList.add("taken");
-                    open[1].classList.remove("open");
-                    open[1].classList.add("taken");
-                }
-                else {
-                    open[0].classList.remove("open");
-                    open[0].classList.add("hidden");
-                    open[1].classList.remove("open");
-                    open[1].classList.add("hidden");
-                }
-                //zur�ck auf 0
-                openCard = 0;
-                //opeList Array l�schen 
-                open.splice(0, 2);
+        }
+    }
+    //Compare Cards Funktion                  
+    function compareCards() {
+        //Suche nach Objekten mit Status "open"; Variablen werden deklariert
+        let cardOne = document.getElementsByClassName("open")[0];
+        let cardTwo = document.getElementsByClassName("open")[1];
+        open.push(cardOne, cardTwo);
+        //Vergleich von Stelle 0 mit 1 im Array
+        if (open[0].innerHTML == open[1].innerHTML) {
+            //Wenn gleich, werden Karten taken
+            open[0].classList.remove("open");
+            open[0].classList.add("taken");
+            open[1].classList.remove("open");
+            open[1].classList.add("taken");
+            //Wenn diese Vorraussetzung erf�llt ist wird takenCards hochgez�hlt
+            takenCards++;
+            if (takenCards == numPairs) {
+                alert("Super!");
+                location.reload(true);
             }
         }
+        else {
+            open[0].classList.remove("open");
+            open[0].classList.add("hidden");
+            open[1].classList.remove("open");
+            open[1].classList.add("hidden");
+        }
+        //Anzahl offener Karten muss jetzt zur�ck auf null
+        openCard = 0;
+        //Array muss wieder geleert werden
+        open.splice(0, 2);
     }
 })(Memory || (Memory = {}));
 //# sourceMappingURL=Aufgabe3.js.map
