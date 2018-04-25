@@ -29,10 +29,13 @@ namespace Memory {
         var numPlayerString: string = prompt("Wieviele Spieler von 1 bis 4?", "");
         numPlayerInt = parseInt(numPlayerString);
         
-            if (numPlayerInt >= 1 && numPlayerInt <=4) {
-            return numPlayerInt;
-         }
-            else {alert("Zahl ungültig!");}
+        if (numPlayer >= 1 && numPlayer <= 4) {
+            return numPlayer;
+
+        }
+        else {
+            alert("Deine Zahl liegt nicht zwischen 1 und 4");
+            player();
         }
 
     //Kartenpaare
@@ -40,12 +43,15 @@ namespace Memory {
         var numPairsString: string = prompt("Wieviele Kartenpaare von 5 bis 10?", "");
         numPairs = parseInt(numPairsString);
         
-          if (numPairs >= 1 && numPairs <=4) {
+        if (numPairs >= 1 && numPairs <= 10) {
             return numPairs;
-    }
-                    else {alert("Zahl ungültig!");}
-        }
 
+        }
+        else {
+            alert("Deine Zahl liegt nicht zwischen 1 und 10");
+            pair();
+}
+}
 
     let amount: number = pair();
 
