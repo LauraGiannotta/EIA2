@@ -28,7 +28,7 @@
 }
 
 .cardhidden h3 {
-	color: #D0A9F5;
+	display: none;
 	font-family: Helvetica;
 }
 
