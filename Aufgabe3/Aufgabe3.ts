@@ -127,7 +127,7 @@ namespace Memory {
             let target: HTMLElement = <HTMLElement>_event.currentTarget;
 
             //Wenn eine Karte angeklickt wird, ändert sich der Status von hidden zu open
-                if (target.classList.contains ("hidden")) {
+                if (target.classList.contains ("hidden")) {    //durch contains wird geschaut ob die Klasse hidden ist
                     target.classList.remove("hidden");
                     target.classList.add("open");
                     //ab hier wird die Anzahl an offenen Karten erhöht
