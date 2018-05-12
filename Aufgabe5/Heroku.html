@@ -17,25 +17,31 @@
 
 <body>
 <h1>Fragen</h1>
-<p>1.Was beschreibt das Interface AssocStringString und wozu kann es verwendet werden?</p>
+<h2>1.Was beschreibt das Interface AssocStringString und wozu kann es verwendet werden?</h2>
 <p>Es beschreibt ein homogenes assoziatives Array mit einem Schlüssen vom Typ string. Zurückgegeben wird ebenfalls ein string.</p>
 
-<p>2.Was geschieht in Zeile 9 und was ist das Ergebnis?</p>
+<h2>2.Was geschieht in Zeile 9 und was ist das Ergebnis?</h2>
 <p>Die Variable Port vom Typ number wird erstellt. Durch process.env.Port wird die Umgebung nach Infos zum Port durchsucht.<br> Falls nichts gefunden wird, wird der Port auf 8100 gesetzt. Der Port dient als Kennnummer, um auf den Host zuzugreifen.</p>
 
-<p>3.Was geschieht in Zeile 25 von ServerTest.ts?</p>
+<h2>3.Was geschieht in Zeile 25 von ServerTest.ts?</h2>
 <p>Es wird die Variable 'query' erstellt vom Typ des 'AssocStringString' Interfaces das einen Schlüssel als string erwartet.
 Die 'Url.parse()' wandelt einen URL-String um und gibt ein URL-Objekt zurück.
 Wenn 'Url.parse()' true ist, dann wird aus query ein neues Objekt vom Interface 'AssocStringString'</p>
 
-<p>4.Wie arbeitet die for-in Schleife in Zeile 29?</p>
+<h2>4.Wie arbeitet die for-in Schleife in Zeile 29?</h2>
 <p>Die Schleife durhläuft das Objekt, bzw. die Eigenschaften der Variablen query. Diese gibt sie auf der Konsole aus.<p>
 
 
-
-<p>5.Was bewirkt die Header-Information Acces-Control-Allow-Origin?</p>
+<h2> 5.Was bewirkt die Header-Information Acces-Control-Allow-Origin? </h2>
 <p>Es frägt ab, ob es der Quelle antworten darf. In dem Fall erlaubt es die Kommunikation mit dem Browser bzw. dem Client, <br> der auf den Server zugreifen will.</p>
 
-
 </body>
+
+<style>
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+html {
+	font-family: arial;
+}
+</style>
+
 </html>
