@@ -1,0 +1,41 @@
+<!--
+		Aufgabe: Aufgabe 05
+		Name: Laura Giannotta
+		Matrikel: 258470
+		Datum: 12.05.2018
+		Hiermit versichere ich, dass ich diesen
+		Code selbst geschrieben habe. Er wurde
+		nicht kopiert und auch nicht diktiert.
+-->
+
+<!Doctype HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Heroku</title>
+</head>
+
+<body>
+<h1>Fragen</h1>
+<p>1.Was beschreibt das Interface AssocStringString und wozu kann es verwendet werden?</p>
+<p>Es beschreibt ein homogenes assoziatives Array mit einem Schlüssen vom Typ string. Zurückgegeben wird ebenfalls ein string.</p>
+
+<p>2.Was geschieht in Zeile 9 und was ist das Ergebnis?</p>
+<p>Die Variable Port vom Typ number wird erstellt. Durch process.env.Port wird die Umgebung nach Infos zum Port durchsucht.<br> Falls nichts gefunden wird, wird der Port auf 8100 gesetzt. Der Port dient als Kennnummer, um auf den Host zuzugreifen.</p>
+
+<p>3.Was geschieht in Zeile 25 von ServerTest.ts?</p>
+<p>Es wird die Variable 'query' erstellt vom Typ des 'AssocStringString' Interfaces das einen Schlüssel als string erwartet.
+Die 'Url.parse()' wandelt einen URL-String um und gibt ein URL-Objekt zurück.
+Wenn 'Url.parse()' true ist, dann wird aus query ein neues Objekt vom Interface 'AssocStringString'</p>
+
+<p>4.Wie arbeitet die for-in Schleife in Zeile 29?</p>
+<p>Die Schleife durhläuft das Objekt, bzw. die Eigenschaften der Variablen query. Diese gibt sie auf der Konsole aus.<p>
+
+
+
+<p>5.Was bewirkt die Header-Information Acces-Control-Allow-Origin?</p>
+<p>Es frägt ab, ob es der Quelle antworten darf. In dem Fall erlaubt es die Kommunikation mit dem Browser bzw. dem Client, der auf den Server zugreifen will.</p>
+
+
+</body>
+</html>
