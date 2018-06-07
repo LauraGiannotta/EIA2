@@ -16,3 +16,6 @@ namespace Aufgabe6 {
     // Homogenes assoziatives Array zur Speicherung einer Person unter der Matrikelnummer
     export let studiHomoAssoc: Studis = {};  
 }
+
+
+
