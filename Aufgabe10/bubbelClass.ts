@@ -15,8 +15,6 @@ namespace L10_Canvas {
         }
 
 
-
-
         draw(): void {
             crc2.fillStyle = "#8EE5EE";
 
