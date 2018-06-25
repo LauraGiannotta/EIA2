@@ -2,7 +2,7 @@ var L10_Canvas;
 (function (L10_Canvas) {
     window.addEventListener("load", init);
     let fishes = [];
-    let Blubber = [];
+    let blubbers = [];
     let imagedata;
     function init(_event) {
         let canvas = document.getElementsByTagName("canvas")[0];
@@ -11,6 +11,7 @@ var L10_Canvas;
         drawWaterAndSand();
         drawPatrickStar(250, 500);
         imagedata = L10_Canvas.crc2.getImageData(0, 0, 600, 800);
+        //Animation
         for (let i = 0; i < 3; i++) {
             let fish = new L10_Canvas.Fish();
             fish.x = Math.random() * L10_Canvas.crc2.canvas.width - 130;
@@ -18,9 +19,11 @@ var L10_Canvas;
             fishes.push(fish);
         }
         for (let i = 0; i < 15; i++) {
-            let x = Math.random() * (400 - 300) + 300;
-            let y = Math.random() * L10_Canvas.crc2.canvas.height - 200;
-            let r = Math.random() * 15;
+            let blubber = new L10_Canvas.Blubber();
+            blubber.x = Math.random() * (400 - 350) + 350;
+            blubber.y = Math.random() * L10_Canvas.crc2.canvas.height - 200;
+            blubber.r = Math.random() * 10;
+            blubbers.push(blubber);
         }
     }
     //Wasser als Hintergrund f�r das gesamte Canvas inkl. Sand
@@ -82,52 +85,6 @@ var L10_Canvas;
         L10_Canvas.crc2.stroke();
         L10_Canvas.crc2.fill();
     }
-    /* function drawFish1(_x: number, _y: number): void {
-         crc2.fillStyle = "#DB7093";
- 
-         crc2.beginPath();
-         crc2.moveTo(_x, _y);
- 
-         crc2.quadraticCurveTo(_x + 50, _y - 50, _x + 100, _y);
-         crc2.lineTo(_x + 130, _y + 30);
-         crc2.lineTo(_x + 130, _y - 25);
-         crc2.lineTo(_x + 100, _y);
-         crc2.quadraticCurveTo(_x + 50, _y + 50, _x, _y);
- 
- 
-         crc2.fill();
-         crc2.stroke();
-     }
-     */
-    /*    function drawFish2(_x: number, _y: number): void {
-            crc2.fillStyle = "#DDA0DD";
-    
-            crc2.beginPath();
-            crc2.moveTo(_x, _y);
-    
-            crc2.quadraticCurveTo(_x + 25, _y - 25, _x + 50, _y);
-            crc2.lineTo(_x + 65, _y + 15);
-            crc2.lineTo(_x + 65, _y - 12);
-            crc2.lineTo(_x + 50, _y);
-            crc2.quadraticCurveTo(_x + 25, _y + 25, _x, _y);
-    
-    
-            crc2.fill();
-            crc2.stroke();
-        }
-    */
-    /*   function drawBlubberBlasen(_x: number, _y: number, _r: number): void {
-           crc2.fillStyle = "#8EE5EE";
-   
-           crc2.beginPath();
-   
-           crc2.arc(_x, _y, _r, 0, 2 * Math.PI);
-           crc2.closePath();
-           crc2.stroke();
-           crc2.fill();
-       }
-   
-       */
     function drawPatrickStar(_x, _y) {
         L10_Canvas.crc2.fillStyle = "#FF4040";
         L10_Canvas.crc2.beginPath();
@@ -159,13 +116,13 @@ var L10_Canvas;
         }
     }
     function moveBlubber() {
-        for (let i = 0; i < Blubber.length; i++) {
-            Blubber[i].move();
+        for (let i = 0; i < L10_Canvas.Blubber.length; i++) {
+            blubbers[i].move();
         }
     }
     function drawBlubber() {
-        for (let i = 0; i < Blubber.length; i++) {
-            Blubber[i].draw();
+        for (let i = 0; i < L10_Canvas.Blubber.length; i++) {
+            blubbers[i].draw();
         }
     }
 })(L10_Canvas || (L10_Canvas = {}));

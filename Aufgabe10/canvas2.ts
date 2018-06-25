@@ -1,7 +1,7 @@
 namespace L10_Canvas {
     window.addEventListener("load", init);
     let fishes: Fish[] = [];
-    let Blubber: Blubber[] = [];
+    let blubbers: Blubber[] = [];
 
 
     let imagedata: ImageData;
@@ -159,13 +159,13 @@ namespace L10_Canvas {
 
     function moveBlubber(): void {
         for (let i: number = 0; i < Blubber.length; i++) {
-            Blubber[i].move();
+            blubbers[i].move();
         }
     }
 
     function drawBlubber(): void {
         for (let i: number = 0; i < Blubber.length; i++) {
-            Blubber[i].draw();
+            blubbers[i].draw();
         }
     }
 
