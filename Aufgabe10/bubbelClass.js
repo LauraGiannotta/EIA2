@@ -1,6 +1,6 @@
 var L10_Canvas;
 (function (L10_Canvas) {
-    class Blubbers {
+    class Blubber {
         move() {
             this.y -= 2;
             if (this.y < -5) {
@@ -16,6 +16,6 @@ var L10_Canvas;
             L10_Canvas.crc2.fill();
         }
     }
-    L10_Canvas.Blubbers = Blubbers;
+    L10_Canvas.Blubber = Blubber;
 })(L10_Canvas || (L10_Canvas = {}));
 //# sourceMappingURL=bubbelClass.js.map

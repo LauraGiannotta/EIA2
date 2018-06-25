@@ -2,6 +2,7 @@ var L10_Canvas;
 (function (L10_Canvas) {
     window.addEventListener("load", init);
     let fishes = [];
+    let Blubber = [];
     let imagedata;
     function init(_event) {
         let canvas = document.getElementsByTagName("canvas")[0];
@@ -20,7 +21,6 @@ var L10_Canvas;
             let x = Math.random() * (400 - 300) + 300;
             let y = Math.random() * L10_Canvas.crc2.canvas.height - 200;
             let r = Math.random() * 15;
-            drawBlubberBlasen(x, y, r);
         }
     }
     //Wasser als Hintergrund f�r das gesamte Canvas inkl. Sand
@@ -99,26 +99,35 @@ var L10_Canvas;
          crc2.stroke();
      }
      */
-    function drawFish2(_x, _y) {
-        L10_Canvas.crc2.fillStyle = "#DDA0DD";
-        L10_Canvas.crc2.beginPath();
-        L10_Canvas.crc2.moveTo(_x, _y);
-        L10_Canvas.crc2.quadraticCurveTo(_x + 25, _y - 25, _x + 50, _y);
-        L10_Canvas.crc2.lineTo(_x + 65, _y + 15);
-        L10_Canvas.crc2.lineTo(_x + 65, _y - 12);
-        L10_Canvas.crc2.lineTo(_x + 50, _y);
-        L10_Canvas.crc2.quadraticCurveTo(_x + 25, _y + 25, _x, _y);
-        L10_Canvas.crc2.fill();
-        L10_Canvas.crc2.stroke();
-    }
-    function drawBlubberBlasen(_x, _y, _r) {
-        L10_Canvas.crc2.fillStyle = "#8EE5EE";
-        L10_Canvas.crc2.beginPath();
-        L10_Canvas.crc2.arc(_x, _y, _r, 0, 2 * Math.PI);
-        L10_Canvas.crc2.closePath();
-        L10_Canvas.crc2.stroke();
-        L10_Canvas.crc2.fill();
-    }
+    /*    function drawFish2(_x: number, _y: number): void {
+            crc2.fillStyle = "#DDA0DD";
+    
+            crc2.beginPath();
+            crc2.moveTo(_x, _y);
+    
+            crc2.quadraticCurveTo(_x + 25, _y - 25, _x + 50, _y);
+            crc2.lineTo(_x + 65, _y + 15);
+            crc2.lineTo(_x + 65, _y - 12);
+            crc2.lineTo(_x + 50, _y);
+            crc2.quadraticCurveTo(_x + 25, _y + 25, _x, _y);
+    
+    
+            crc2.fill();
+            crc2.stroke();
+        }
+    */
+    /*   function drawBlubberBlasen(_x: number, _y: number, _r: number): void {
+           crc2.fillStyle = "#8EE5EE";
+   
+           crc2.beginPath();
+   
+           crc2.arc(_x, _y, _r, 0, 2 * Math.PI);
+           crc2.closePath();
+           crc2.stroke();
+           crc2.fill();
+       }
+   
+       */
     function drawPatrickStar(_x, _y) {
         L10_Canvas.crc2.fillStyle = "#FF4040";
         L10_Canvas.crc2.beginPath();
@@ -136,6 +145,8 @@ var L10_Canvas;
         L10_Canvas.crc2.putImageData(imagedata, 0, 0);
         moveFishes();
         drawFishes();
+        moveBlubber();
+        drawBlubber();
     }
     function moveFishes() {
         for (let i = 0; i < fishes.length; i++) {
@@ -145,6 +156,16 @@ var L10_Canvas;
     function drawFishes() {
         for (let i = 0; i < fishes.length; i++) {
             fishes[i].draw();
+        }
+    }
+    function moveBlubber() {
+        for (let i = 0; i < Blubber.length; i++) {
+            Blubber[i].move();
+        }
+    }
+    function drawBlubber() {
+        for (let i = 0; i < Blubber.length; i++) {
+            Blubber[i].draw();
         }
     }
 })(L10_Canvas || (L10_Canvas = {}));

@@ -1,6 +1,6 @@
 namespace L10_Canvas {
 
-    export class Blubbers {
+    export class Blubber {
         x: number;
         y: number;
         r: number;
