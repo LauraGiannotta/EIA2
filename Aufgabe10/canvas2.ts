@@ -158,13 +158,13 @@ namespace L10_Canvas {
     }
 
     function moveBlubber(): void {
-        for (let i: number = 0; i < Blubber.length; i++) {
+        for (let i: number = 0; i < blubbers.length; i++) {
             blubbers[i].move();
         }
     }
 
     function drawBlubber(): void {
-        for (let i: number = 0; i < Blubber.length; i++) {
+        for (let i: number = 0; i < blubbers.length; i++) {
             blubbers[i].draw();
         }
     }

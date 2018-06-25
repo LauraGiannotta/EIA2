@@ -116,12 +116,12 @@ var L10_Canvas;
         }
     }
     function moveBlubber() {
-        for (let i = 0; i < L10_Canvas.Blubber.length; i++) {
+        for (let i = 0; i < blubbers.length; i++) {
             blubbers[i].move();
         }
     }
     function drawBlubber() {
-        for (let i = 0; i < L10_Canvas.Blubber.length; i++) {
+        for (let i = 0; i < blubbers.length; i++) {
             blubbers[i].draw();
         }
     }
