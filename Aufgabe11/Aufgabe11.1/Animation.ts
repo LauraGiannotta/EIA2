@@ -23,20 +23,20 @@ namespace Aufgabe11_1 {
     }
 
     function insertNewObject(_event: MouseEvent): void {
-       // let star: DavidStar = new DavidStar("#ffff00");
-        //stars.push(star);
+
+
         let _x: number = _event.pageX;
         let _y: number = _event.pageY;
 
         let zufall: number = Math.random() * 13;
 
         if (zufall < 4) {
-            let star: DavidStar = new DavidStar("#8000ff");
+            let star: DavidStar = new DavidStar("#E6E6FA");
             star.x = _x;
             star.y =_y;
             stars.push(star);
         } else if (zufall < 8) {
-            let rect: Rect = new Rect("#a65dff");
+            let rect: Rect = new Rect("#FFF0F5");
             rect.x = _x;
             rect.y = _y;
             stars.push(rect);

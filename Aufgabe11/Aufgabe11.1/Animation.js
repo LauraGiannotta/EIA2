@@ -17,19 +17,17 @@ var Aufgabe11_1;
         animate();
     }
     function insertNewObject(_event) {
-        // let star: DavidStar = new DavidStar("#ffff00");
-        //stars.push(star);
         let _x = _event.pageX;
         let _y = _event.pageY;
         let zufall = Math.random() * 13;
         if (zufall < 4) {
-            let star = new Aufgabe11_1.DavidStar("#8000ff");
+            let star = new Aufgabe11_1.DavidStar("#E6E6FA");
             star.x = _x;
             star.y = _y;
             stars.push(star);
         }
         else if (zufall < 8) {
-            let rect = new Aufgabe11_1.Rect("#a65dff");
+            let rect = new Aufgabe11_1.Rect("#FFF0F5");
             rect.x = _x;
             rect.y = _y;
             stars.push(rect);
