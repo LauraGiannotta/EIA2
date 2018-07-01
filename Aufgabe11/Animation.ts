@@ -16,7 +16,7 @@ namespace Aufgabe11 {
 
         let hintergrund: Background = new Background();
         hintergrund.paint();
-        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); //Canvas als Bild gespeichert
+        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); 
         console.log(imgData);
 
         canvas.addEventListener("click", insertNewObject);

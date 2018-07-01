@@ -14,7 +14,7 @@ var Aufgabe11;
         let height = canvas.height;
         let hintergrund = new Aufgabe11.Background();
         hintergrund.paint();
-        imgData = Aufgabe11.crc2.getImageData(0, 0, canvas.width, canvas.height); //Canvas als Bild gespeichert
+        imgData = Aufgabe11.crc2.getImageData(0, 0, canvas.width, canvas.height);
         console.log(imgData);
         canvas.addEventListener("click", insertNewObject);
         canvas.addEventListener("touchstart", insertNewObject);
