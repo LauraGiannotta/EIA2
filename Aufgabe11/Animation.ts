@@ -3,9 +3,9 @@ namespace Aufgabe11 {
     export let crc2: CanvasRenderingContext2D;
     let imgData: ImageData;
     let objects: MovingObjects[] = [];
-    let nfish: number = 10;
-    let nsfisch: number = 30;
-    let b: number = 30;
+//    let afisch: number = 10;
+//    let bfisch: number = 30;
+//    let n: number = 30;
 
     function init(_event: Event): void {
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
@@ -23,18 +23,26 @@ namespace Aufgabe11 {
 
         canvas.addEventListener("touchstart", insertNewObject);
 
-        // Fische
-        for (let i: number = 0; i < nfish; i++) {
-            let fish: Fish = new Fish(Math.random() * crc2.canvas.width, Math.random() * crc2.canvas.height, "rgb(255,106,106)");
-            objects.push(fish);
-        }
-
-        // Bubble 
-     for (let i: number = 0; i < b - 2; i++) {
-            let blubb: Bubble = new Bubble(Math.random() * (1000 - 500) + 0, Math.random() * 180, "rgba(188,210,238,10)");
-            blubb.r = Math.random() * 10;
-            objects.push(blubb);
-} 
+//        //Fische
+//
+//        for (let i: number = 0; i < afish; i++) {
+//            let fish: Fish = new Fish();
+//            fish.x = Math.random() * crc2.canvas.width - 130;
+//            fish.y = Math.random() * crc2.canvas.height - 300;
+//
+//            objects.push(fish);
+//
+//        }
+//
+//        //Blubberblasen
+//
+//        for (let i: number = 0; i < b; i++) {
+//            let blubb: Bubble = new Bubble();
+//            blubb.x = Math.random() * (400 - 350) + 350;
+//            blubb.y = Math.random() * crc2.canvas.height - 200;
+//            blubb.r = Math.random() * 10;
+//            objects.push(blubb);
+//        }
 
 
 

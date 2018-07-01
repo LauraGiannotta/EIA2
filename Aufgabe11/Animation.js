@@ -3,9 +3,9 @@ var Aufgabe11;
     window.addEventListener("load", init);
     let imgData;
     let objects = [];
-    let nfish = 10;
-    let nsfisch = 30;
-    let b = 30;
+    //    let afisch: number = 10;
+    //    let bfisch: number = 30;
+    //    let n: number = 30;
     function init(_event) {
         let canvas = document.getElementsByTagName("canvas")[0];
         Aufgabe11.crc2 = canvas.getContext("2d");
@@ -18,17 +18,26 @@ var Aufgabe11;
         console.log(imgData);
         canvas.addEventListener("click", insertNewObject);
         canvas.addEventListener("touchstart", insertNewObject);
-        // Fische
-        for (let i = 0; i < nfish; i++) {
-            let fish = new Aufgabe11.Fish(Math.random() * Aufgabe11.crc2.canvas.width, Math.random() * Aufgabe11.crc2.canvas.height, "rgb(255,106,106)");
-            objects.push(fish);
-        }
-        // Bubble 
-        for (let i = 0; i < b - 2; i++) {
-            let blubb = new Aufgabe11.Bubble(Math.random() * (1000 - 500) + 0, Math.random() * 180, "rgba(188,210,238,10)");
-            blubb.r = Math.random() * 10;
-            objects.push(blubb);
-        }
+        //        //Fische
+        //
+        //        for (let i: number = 0; i < afish; i++) {
+        //            let fish: Fish = new Fish();
+        //            fish.x = Math.random() * crc2.canvas.width - 130;
+        //            fish.y = Math.random() * crc2.canvas.height - 300;
+        //
+        //            objects.push(fish);
+        //
+        //        }
+        //
+        //        //Blubberblasen
+        //
+        //        for (let i: number = 0; i < b; i++) {
+        //            let blubb: Bubble = new Bubble();
+        //            blubb.x = Math.random() * (400 - 350) + 350;
+        //            blubb.y = Math.random() * crc2.canvas.height - 200;
+        //            blubb.r = Math.random() * 10;
+        //            objects.push(blubb);
+        //        }
         animate();
     }
     //Neue Objecte alias Futter
