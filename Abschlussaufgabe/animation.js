@@ -50,6 +50,19 @@ var L12_Canvas;
                     break;
             }
         });
+        //Anonyme Funktion f�r Touch auf dem Handy
+        document.querySelector("body").addEventListener("touchstart", function (e) {
+            const canvasTouchPosX = e.touches.item(0).clientX - document.querySelector('canvas').clientLeft;
+            L12_Canvas.kaetzchen.move_Katze(canvasTouchPosX);
+        });
+        document.querySelector("body").addEventListener("touchmove", function (e) {
+            const canvasTouchPosX = e.touches.item(0).clientX - document.querySelector('canvas').clientLeft;
+            L12_Canvas.kaetzchen.move_Katze(canvasTouchPosX);
+        });
+        document.querySelector("body").addEventListener("touchend", function (e) {
+            L12_Canvas.kaetzchen.stop_Katze();
+        });
+        L12_Canvas.crc2.putImageData(L12_Canvas.imageData, 0, 0);
     }
     animate();
     // Alle 10 Millisekunden Funktion erneut aufrufen um bewegung zu erzeugen

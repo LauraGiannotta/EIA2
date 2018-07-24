@@ -67,8 +67,36 @@ namespace L12_Canvas {
                     break;
             }
         });
+        
+        
+                //Anonyme Funktion für Touch auf dem Handy
+        document.querySelector("body").addEventListener("touchstart", function(e: TouchEvent) {
 
-    }
+            const canvasTouchPosX = e.touches.item(0).clientX - document.querySelector('canvas').clientLeft;
+
+            kaetzchen.move_Katze(canvasTouchPosX);
+        });
+
+        document.querySelector("body").addEventListener("touchmove", function(e: TouchEvent) {
+
+            const canvasTouchPosX = e.touches.item(0).clientX - document.querySelector('canvas').clientLeft;
+
+            kaetzchen.move_Katze(canvasTouchPosX);
+        });
+
+        document.querySelector("body").addEventListener("touchend", function(e: TouchEvent) {
+            kaetzchen.stop_Katze();
+        });
+
+
+        crc2.putImageData(imageData, 0, 0);
+
+}
+        
+        
+        
+
+    
     animate();
 
 
