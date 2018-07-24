@@ -69,12 +69,9 @@ namespace L12_Canvas {
         });
 
     }
-   
-    
-    
-    
-    
     animate();
+
+
 
     // Alle 10 Millisekunden Funktion erneut aufrufen um bewegung zu erzeugen
     function animate(): void {
