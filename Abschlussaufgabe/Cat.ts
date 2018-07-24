@@ -1,8 +1,10 @@
 namespace L12_Canvas {
 
     export class Katze extends MovingObjects {
-        r: number;
+
         dx: number;
+        mixerWidth: number = 300;
+        mixerHight: number = 330;
 
         constructor(_x: number, _y: number) {
             super(_x, _y);
@@ -10,7 +12,6 @@ namespace L12_Canvas {
             this.y = _y;
             this.dx = _x;
             this.move();
-
         }
 
         move(): void {
@@ -23,10 +24,6 @@ namespace L12_Canvas {
             this.x += movement;
 
             this.draw();
-
-
-
-
         }
 
 
@@ -38,6 +35,15 @@ namespace L12_Canvas {
             this.dx = this.x;
         }
 
+        //Voegel fangen
+
+        eatenCat(_x: number, _y: number): boolean {
+            if (_x > this.x && _x < (this.x + this.mixerWidth) && _y > this.y && _y < this.y + this.mixerHight) {
+                return true;
+
+            }
+            return false;
+        }
 
         draw(): void {
 
@@ -95,14 +101,12 @@ namespace L12_Canvas {
             crc2.fillStyle = "#ED92A6";
             crc2.beginPath();
             crc2.arc(this.x + 40, this.y + 240, 20, 0, 2 * Math.PI);
-
             crc2.fill();
             crc2.closePath();
 
             crc2.fillStyle = "#ED92A6";
             crc2.beginPath();
             crc2.arc(this.x + 40, this.y + 225, 25, 0, 2 * Math.PI);
-
             crc2.fill();
             crc2.closePath();
 
@@ -110,14 +114,12 @@ namespace L12_Canvas {
             crc2.fillStyle = "#ED92A6";
             crc2.beginPath();
             crc2.arc(this.x + 290, this.y + 240, 20, 0, 2 * Math.PI);
-
             crc2.fill();
             crc2.closePath();
 
             crc2.fillStyle = "#ED92A6";
             crc2.beginPath();
             crc2.arc(this.x + 290, this.y + 225, 25, 0, 2 * Math.PI);
-
             crc2.fill();
             crc2.closePath();
 
@@ -148,13 +150,10 @@ namespace L12_Canvas {
             crc2.beginPath();
             crc2.moveTo(this.x + 165, this.y + 195);
             crc2.lineTo(this.x + 230, this.y + 210);
-
             crc2.moveTo(this.x + 165, this.y + 195);
             crc2.lineTo(this.x + 230, this.y + 195);
-
             crc2.moveTo(this.x + 165, this.y + 195);
             crc2.lineTo(this.x + 230, this.y + 180);
-
             crc2.closePath();
             crc2.stroke();
 
@@ -168,49 +167,6 @@ namespace L12_Canvas {
             crc2.quadraticCurveTo(this.x + 155, this.y + 180, this.x + 145, this.y + 170);
 
             crc2.stroke();
-
-            //            crc2.lineTo(this.x + 20, this.y + 60);
-            //            crc2.lineTo(this.x, this.y - 20);
-
-            //
-            //            crc2.fillStyle = "#A4A4A4";
-            //            crc2.beginPath();
-            //            crc2.moveTo(this.x + 20, this.y + 60);
-            //            crc2.lineTo(this.x + 80, this.y + 60);
-            //            crc2.quadraticCurveTo(this.x + 100, this.y + 60, this.x + 100, this.y + 80);
-            //            crc2.lineTo(this.x + 100, this.y + 130);
-            //            crc2.quadraticCurveTo(this.x + 100, this.y + 150, this.x + 80, this.y + 150);
-            //            crc2.lineTo(this.x + 20, this.y + 150);
-            //            crc2.quadraticCurveTo(this.x, this.y + 150, this.x, this.y + 130);
-            //            crc2.lineTo(this.x, this.y + 80);
-            //            crc2.quadraticCurveTo(this.x, this.y + 60, this.x + 20, this.y + 60);
-            //            crc2.stroke();
-            //            crc2.fill();            
-            //            crc2.closePath();
-            //            
-            //            crc2.fillStyle = "#6E6E6E";
-            //            crc2.beginPath();
-            //            crc2.arc(this.x + 50, this.y + 105, this.r, 0,2 * Math.PI);
-            //            crc2.stroke();
-            //            crc2.fill();            
-            //            crc2.closePath();
-            //            
-            //            crc2.fillStyle = "#848484";
-            //            crc2.beginPath();
-            //            crc2.arc(this.x + 50, this.y + 105, this.r - 10, 0,2 * Math.PI);
-            //            crc2.stroke();
-            //            crc2.fill();            
-            //            crc2.closePath();
-            //
-            //            
-            //            crc2.fillStyle = "#190710";
-            //            crc2.beginPath();
-            //            crc2.moveTo(this.x + 50, this.y + 105);
-            //            crc2.lineTo(this.x + 40, this.y + 105);
-            //            crc2.stroke();
-            //            crc2.fill();            
-            //            crc2.closePath();
-            //            
         }
     }
 

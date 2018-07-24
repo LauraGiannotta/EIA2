@@ -1,6 +1,6 @@
 namespace L12_Canvas {
 
-    export class Bird extends MovingObjects {
+    export class ToxicBird extends MovingObjects {
         r: number;
 
 
@@ -80,7 +80,7 @@ namespace L12_Canvas {
             crc2.stroke();
 
             //Augen
-            crc2.fillStyle = "#714B14";
+            crc2.fillStyle = "#E20719";
             crc2.beginPath();
             crc2.arc(this.x - 4, this.y - 33, 2, 0, 2 * Math.PI);
             crc2.fill();

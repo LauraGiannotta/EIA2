@@ -1,6 +1,6 @@
 var L12_Canvas;
 (function (L12_Canvas) {
-    class Bird extends L12_Canvas.MovingObjects {
+    class ToxicBird extends L12_Canvas.MovingObjects {
         constructor(_x, _y) {
             super(_x, _y);
         }
@@ -61,7 +61,7 @@ var L12_Canvas;
             L12_Canvas.crc2.closePath();
             L12_Canvas.crc2.stroke();
             //Augen
-            L12_Canvas.crc2.fillStyle = "#714B14";
+            L12_Canvas.crc2.fillStyle = "#E20719";
             L12_Canvas.crc2.beginPath();
             L12_Canvas.crc2.arc(this.x - 4, this.y - 33, 2, 0, 2 * Math.PI);
             L12_Canvas.crc2.fill();
@@ -72,6 +72,6 @@ var L12_Canvas;
             L12_Canvas.crc2.closePath();
         }
     }
-    L12_Canvas.Bird = Bird;
+    L12_Canvas.ToxicBird = ToxicBird;
 })(L12_Canvas || (L12_Canvas = {}));
-//# sourceMappingURL=Bird.js.map
+//# sourceMappingURL=DoNotEat.js.map

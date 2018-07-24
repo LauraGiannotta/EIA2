@@ -9,7 +9,7 @@ namespace L12_Canvas {
 
         // Himmel
         crc2.fillStyle = "#819FF7";
-        crc2.fillRect(0, 0, 600, 800);
+        crc2.fillRect(0, 0, 800, 700);
 
         //Wise
         crc2.fillStyle = "#39D07B";

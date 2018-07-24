@@ -8,7 +8,7 @@ var L12_Canvas;
     function drawBackground() {
         // Himmel
         L12_Canvas.crc2.fillStyle = "#819FF7";
-        L12_Canvas.crc2.fillRect(0, 0, 600, 800);
+        L12_Canvas.crc2.fillRect(0, 0, 800, 700);
         //Wise
         L12_Canvas.crc2.fillStyle = "#39D07B";
         L12_Canvas.crc2.fillRect(0, 350, 800, 800);

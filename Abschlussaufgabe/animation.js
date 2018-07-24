@@ -3,6 +3,7 @@ var L12_Canvas;
     window.addEventListener("load", init);
     let objects = [];
     let nBird = 15;
+    let score = 0;
     function init(_event) {
         let canvas = document.getElementsByTagName("canvas")[0];
         //canvas.width = canvas.clientWidth;
@@ -10,32 +11,25 @@ var L12_Canvas;
         L12_Canvas.crc2 = canvas.getContext("2d");
         // Funktionsaufrufe
         L12_Canvas.drawAllBackgrounds();
-        canvas.addEventListener("click", insertNewObject);
         // Animation 
         for (let i = 0; i < nBird; i++) {
-            let birds = new L12_Canvas.Bird(Math.random() * L12_Canvas.crc2.canvas.width - 50, Math.random() * (1000 + 800) + 800);
+            let birds = new L12_Canvas.Bird(Math.random() * (600 - 100) + 100, Math.random() * (1000 + 800) + 800);
             objects.push(birds);
-            birds.r = 2;
         }
-        /*for (let i: number = 0; i < nBubble; i++) {
-            let mixer: Mixer = new Mixer(100, 600);
-            mixer.r = 20;
-            objects.push(mixer);
-        }
-        */
         L12_Canvas.imageData = L12_Canvas.crc2.getImageData(0, 0, canvas.width, canvas.height);
         L12_Canvas.kaetzchen = new L12_Canvas.Katze(0, -100);
         objects.push(L12_Canvas.kaetzchen);
+        //Computersteuerung
         document.querySelector("body").addEventListener("keydown", function (e) {
             //const event: KeyboardEvent = window.event ? window.event : e;
             switch (e.keyCode) {
                 //linke Pfeiltaste
                 case 37:
-                    L12_Canvas.kaetzchen.move_Katze(30 * (600 / 800));
+                    L12_Canvas.kaetzchen.move_Katze(document.querySelector('canvas').clientWidth - document.querySelector('canvas').clientWidth - 5);
                     break;
                 //rechte Pfeiltaste
                 case 39:
-                    L12_Canvas.kaetzchen.move_Katze(document.querySelector('canvas').clientWidth);
+                    L12_Canvas.kaetzchen.move_Katze(document.querySelector('canvas').clientWidth - 320);
                     break;
             }
         });
@@ -54,21 +48,25 @@ var L12_Canvas;
         });
     }
     animate();
-    function insertNewObject(_event) {
-        let cx = _event.pageX;
-        let cy = _event.pageY;
-        let flake = new L12_Canvas.Food(cx, cy);
-        flake.r = Math.random() * 4;
-        objects.push(flake);
-    }
     // Alle 10 Millisekunden Funktion erneut aufrufen um bewegung zu erzeugen
     function animate() {
         window.setTimeout(animate, 25);
         L12_Canvas.crc2.putImageData(L12_Canvas.imageData, 0, 0);
         moveobjects();
         drawobjects();
+        findKatze();
     }
-    // Fische bewegen und zeichnen
+    function findKatze() {
+        window.setTimeout(findKatze, 10);
+        for (let i = 0; i < objects.length; i++) {
+            let apple = objects[i];
+            let inside = L12_Canvas.kaetzchen.eatenCat(apple.x, apple.y);
+            if (inside) {
+                objects.splice(i, 1);
+            }
+        }
+    }
+    //Objekte bewegen und Zeichnen
     function moveobjects() {
         for (let i = 0; i < objects.length; i++) {
             objects[i].move();
