@@ -1,0 +1,12 @@
+body {
+	background-color: #f2dfae;
+	width: 100%;
+	margin: 0;
+}
+
+canvas {
+	border: 5px dotted;
+	border-color: #c53a5e;
+	margin-left: 25%;
+	max-width: 50%;
+}
