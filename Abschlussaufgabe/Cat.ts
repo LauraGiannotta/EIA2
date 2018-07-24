@@ -4,7 +4,7 @@ namespace L12_Canvas {
 
         dx: number;
         mixerWidth: number = 300;
-        mixerHight: number = 330;
+        mixerHight: number = 280;
 
         constructor(_x: number, _y: number) {
             super(_x, _y);
@@ -37,7 +37,7 @@ namespace L12_Canvas {
 
         //Voegel fangen
 
-        eatenCat(_x: number, _y: number): boolean {
+        eatenBird(_x: number, _y: number): boolean {
             if (_x > this.x && _x < (this.x + this.mixerWidth) && _y > this.y && _y < this.y + this.mixerHight) {
                 return true;
 

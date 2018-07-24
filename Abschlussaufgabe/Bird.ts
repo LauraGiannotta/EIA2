@@ -12,6 +12,7 @@ namespace L12_Canvas {
 
         move(): void {
             this.y -= 4;
+            
 
             if (this.y < -30) {
                 this.y = Math.random() * (1000 + 800) + 800;

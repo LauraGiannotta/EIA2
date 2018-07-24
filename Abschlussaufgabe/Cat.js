@@ -4,7 +4,7 @@ var L12_Canvas;
         constructor(_x, _y) {
             super(_x, _y);
             this.mixerWidth = 300;
-            this.mixerHight = 330;
+            this.mixerHight = 280;
             this.x = _x;
             this.y = _y;
             this.dx = _x;
@@ -27,7 +27,7 @@ var L12_Canvas;
             this.dx = this.x;
         }
         //Voegel fangen
-        eatenCat(_x, _y) {
+        eatenBird(_x, _y) {
             if (_x > this.x && _x < (this.x + this.mixerWidth) && _y > this.y && _y < this.y + this.mixerHight) {
                 return true;
             }

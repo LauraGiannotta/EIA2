@@ -2,33 +2,38 @@ namespace L12_Canvas {
     window.addEventListener("load", init);
     let objects: MovingObjects[] = [];
     let nBird: number = 15;
-   
+    let nToxicBird: number = 3;
     export let imageData: ImageData;
     export let crc2: CanvasRenderingContext2D;
-    export let kaetzchen: Katze;   
-    let score: number = 0;
+    export let kaetzchen: Katze;
+
 
 
 
     function init(_event: Event): void {
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
-        //canvas.width = canvas.clientWidth;
-        //canvas.height = canvas.clientHeight;
+
         crc2 = canvas.getContext("2d");
 
+        alert("Hey, hilf der abbaumelnden Katze sich mit Tauben den Bauch voll zu schlagen. Aber Achtung vor den roten Augen!");
 
 
         // Funktionsaufrufe
         drawAllBackgrounds();
-      
 
 
-        // Animation 
+
+        // Animation gute Vögel
         for (let i: number = 0; i < nBird; i++) {
             let birds: Bird = new Bird(Math.random() * (600 - 100) + 100, Math.random() * (1000 + 800) + 800);
             objects.push(birds);
         }
 
+        //Animation böse Vögel
+        for (let i: number = 0; i < nToxicBird; i++) {
+            let toxicBirds: ToxicBird = new ToxicBird(Math.random() * (600 - 100) + 100, Math.random() * (1000 + 800) + 800);
+            objects.push(toxicBirds);
+        }
 
         imageData = crc2.getImageData(0, 0, canvas.width, canvas.height);
         kaetzchen = new Katze(0, -100);
@@ -65,7 +70,7 @@ namespace L12_Canvas {
 
     }
     animate();
-    
+
 
 
     // Alle 10 Millisekunden Funktion erneut aufrufen um bewegung zu erzeugen
@@ -78,24 +83,27 @@ namespace L12_Canvas {
         findKatze();
     }
 
-    
+
     function findKatze(): void {
-        window.setTimeout( findKatze, 10 );
-        for ( let i: number = 0; i < objects.length; i++ ) {
-            let apple = objects[i];
-            let inside = kaetzchen.eatenCat( apple.x, apple.y );
-            
-            
+        window.setTimeout(findKatze, 10);
+        for (let i: number = 0; i < objects.length; i++) {
+            let birdy = objects[i];
+            let inside = kaetzchen.eatenBird(birdy.x, birdy.y);
 
-            if ( inside ) {
-                objects.splice( i, 1 );
+
+            if (inside) {
+                objects.splice(i, 1);
+                let birds: Bird = new Bird(Math.random() * (600 - 100) + 100, Math.random() * (1000 + 800) + 800);
+                objects.unshift(birds);
+                if (i >= (nBird) && i <= (nBird + nToxicBird)) {
+                    alert("Ohje, der war wohl giftig... willst du's nochmal veruschen?");
+                    location.reload(true)
+                }
             }
-            
-
         }
-}
-    
-    
+    }
+
+
     //Objekte bewegen und Zeichnen
     function moveobjects(): void {
         for (let i: number = 0; i < objects.length; i++) {
@@ -107,24 +115,4 @@ namespace L12_Canvas {
         for (let i: number = 0; i < objects.length; i++)
             objects[i].draw();
     }
-    
-    
-    
-    
-//    function updateHighscore(points: number): void {
-//        score += points;
-//        if (score >= 150) {
-//            alert("Cool, du hast einen Scoore von" + points + "erreicht");
-//            score = 0;
-//        }
-//    }
-
-//    //Funktion die den Punktestand zeichnet
-//    function showHighscore(): void {
-//        crc2.font = "30px Arial";
-//        crc2.fillStyle = "#000000";
-//        crc2.fillText( "Punkte: " + score, 10, 50 );
-//    }
-
-
 }
