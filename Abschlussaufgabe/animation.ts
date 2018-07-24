@@ -69,9 +69,30 @@ namespace L12_Canvas {
         });
 
     }
+   
+    
+      //Anonyme Funktion für Touch auf dem Handy
+        document.querySelector("body").addEventListener("touchstart", function(e: TouchEvent) {
+
+            const canvasTouchPosX = e.touches.item(0).clientX - document.querySelector('canvas').clientLeft;
+
+            kaetzchen.move_Katze(canvasTouchPosX);
+        });
+
+        document.querySelector("body").addEventListener("touchmove", function(e: TouchEvent) {
+
+            const canvasTouchPosX = e.touches.item(0).clientX - document.querySelector('canvas').clientLeft;
+
+            kaetzchen.move_Katze(canvasTouchPosX);
+        });
+
+        document.querySelector("body").addEventListener("touchend", function(e: TouchEvent) {
+            kaetzchen.stop_Katze();
+        });
+
+    
+    
     animate();
-
-
 
     // Alle 10 Millisekunden Funktion erneut aufrufen um bewegung zu erzeugen
     function animate(): void {
