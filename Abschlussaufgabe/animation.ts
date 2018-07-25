@@ -9,9 +9,6 @@ namespace L12_Canvas {
     let catchedBirds: number = 0;
 
 
-
-
-
     function init(_event: Event): void {
         let canvas: HTMLCanvasElement = document.getElementsByTagName("canvas")[0];
 
@@ -22,8 +19,6 @@ namespace L12_Canvas {
 
         // Funktionsaufrufe
         drawAllBackgrounds();
-
-
 
         // Animation gute Vögel
         for (let i: number = 0; i < nBird; i++) {
@@ -95,13 +90,7 @@ namespace L12_Canvas {
 
     }
 
-
-
-
-
     animate();
-
-
 
     // Alle 10 Millisekunden Funktion erneut aufrufen um bewegung zu erzeugen
     function animate(): void {
@@ -113,13 +102,11 @@ namespace L12_Canvas {
         findKatze();
     }
 
-
     function findKatze(): void {
         window.setTimeout(findKatze, 10);
         for (let i: number = 0; i < objects.length; i++) {
             let birdy = objects[i];
             let inside = kaetzchen.eatenBird(birdy.x, birdy.y);
-
 
             if (inside) {
                 objects.splice(i, 1);

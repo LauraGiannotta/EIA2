@@ -27,7 +27,7 @@ namespace L12_Canvas {
         }
 
 
-        public move_Katze(targetX: number): void {
+        move_Katze(targetX: number): void {
             this.dx = targetX;
         }
 

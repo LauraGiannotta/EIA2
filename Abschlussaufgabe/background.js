@@ -22,16 +22,6 @@ var L12_Canvas;
         L12_Canvas.crc2.arc(0, 0, 350, 0, 2 * Math.PI);
         L12_Canvas.crc2.fill();
         L12_Canvas.crc2.closePath;
-        //        // Berg
-        //        crc2.fillStyle = "#298A08";
-        //
-        //        crc2.beginPath();
-        //        crc2.moveTo(0, 600);
-        //        crc2.quadraticCurveTo(150, 550, 0, 600);
-        //        crc2.quadraticCurveTo(450, 300, 600, 600);
-        //        crc2.lineTo(600, 800);
-        //        crc2.lineTo(0, 800);
-        //        crc2.fill();
     }
 })(L12_Canvas || (L12_Canvas = {}));
 //# sourceMappingURL=background.js.map
