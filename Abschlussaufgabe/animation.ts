@@ -104,7 +104,6 @@ namespace L12_Canvas {
 
     //positionen von Katze und Vogel vergleichen
     function findBird(): void {
-        window.setTimeout(findBird, 10);
         for (let i: number = 0; i < objects.length; i++) {
             let birdy = objects[i];
             let inside = kaetzchen.eatenBird(birdy.x, birdy.y);

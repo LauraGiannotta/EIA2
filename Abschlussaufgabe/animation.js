@@ -76,7 +76,6 @@ var L12_Canvas;
     }
     //positionen von Katze und Vogel vergleichen
     function findBird() {
-        window.setTimeout(findBird, 10);
         for (let i = 0; i < objects.length; i++) {
             let birdy = objects[i];
             let inside = L12_Canvas.kaetzchen.eatenBird(birdy.x, birdy.y);
