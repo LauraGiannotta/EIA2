@@ -20,13 +20,13 @@ namespace L12_Canvas {
         // Funktionsaufrufe
         drawAllBackgrounds();
 
-        // Animation gute Vögel
+        //  gute Vögel
         for (let i: number = 0; i < nBird; i++) {
             let birds: Bird = new Bird(Math.random() * (600 - 100) + 100, Math.random() * (1000 + 800) + 800);
             objects.push(birds);
         }
 
-        //Animation böse Vögel
+        // böse Vögel
         for (let i: number = 0; i < nToxicBird; i++) {
             let toxicBirds: ToxicBird = new ToxicBird(Math.random() * (600 - 100) + 100, Math.random() * (1000 + 800) + 800);
             objects.push(toxicBirds);
@@ -66,7 +66,7 @@ namespace L12_Canvas {
         });
 
 
-        //Anonyme Funktion für Touch auf dem Handy
+        //Funktion für Touch
         document.querySelector("body").addEventListener("touchstart", function(e: TouchEvent) {
 
             const canvasTouchPosX = e.touches.item(0).clientX - document.querySelector('canvas').clientLeft;
@@ -99,11 +99,12 @@ namespace L12_Canvas {
         crc2.putImageData(imageData, 0, 0);
         moveobjects();
         drawobjects();
-        findKatze();
+        findBird();
     }
 
-    function findKatze(): void {
-        window.setTimeout(findKatze, 10);
+    //positionen von Katze und Vogel vergleichen
+    function findBird(): void {
+        window.setTimeout(findBird, 10);
         for (let i: number = 0; i < objects.length; i++) {
             let birdy = objects[i];
             let inside = kaetzchen.eatenBird(birdy.x, birdy.y);

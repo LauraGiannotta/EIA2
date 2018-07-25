@@ -11,12 +11,12 @@ var L12_Canvas;
         alert("Hey, hilf der abbaumelnden Katze sich mit Tauben den Bauch voll zu schlagen. Aber Achtung vor den roten Augen!");
         // Funktionsaufrufe
         L12_Canvas.drawAllBackgrounds();
-        // Animation gute V�gel
+        //  gute V�gel
         for (let i = 0; i < nBird; i++) {
             let birds = new L12_Canvas.Bird(Math.random() * (600 - 100) + 100, Math.random() * (1000 + 800) + 800);
             objects.push(birds);
         }
-        //Animation b�se V�gel
+        // b�se V�gel
         for (let i = 0; i < nToxicBird; i++) {
             let toxicBirds = new L12_Canvas.ToxicBird(Math.random() * (600 - 100) + 100, Math.random() * (1000 + 800) + 800);
             objects.push(toxicBirds);
@@ -51,7 +51,7 @@ var L12_Canvas;
                     break;
             }
         });
-        //Anonyme Funktion f�r Touch auf dem Handy
+        //Funktion f�r Touch
         document.querySelector("body").addEventListener("touchstart", function (e) {
             const canvasTouchPosX = e.touches.item(0).clientX - document.querySelector('canvas').clientLeft;
             L12_Canvas.kaetzchen.move_Katze(canvasTouchPosX);
@@ -72,10 +72,11 @@ var L12_Canvas;
         L12_Canvas.crc2.putImageData(L12_Canvas.imageData, 0, 0);
         moveobjects();
         drawobjects();
-        findKatze();
+        findBird();
     }
-    function findKatze() {
-        window.setTimeout(findKatze, 10);
+    //positionen von Katze und Vogel vergleichen
+    function findBird() {
+        window.setTimeout(findBird, 10);
         for (let i = 0; i < objects.length; i++) {
             let birdy = objects[i];
             let inside = L12_Canvas.kaetzchen.eatenBird(birdy.x, birdy.y);
