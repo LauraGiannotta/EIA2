@@ -7,7 +7,7 @@ namespace L12_Canvas {
         }
 
         move(): void {
-            this.y -= 4;
+            this.y -= 6;
             
 
             if (this.y < -30) {
