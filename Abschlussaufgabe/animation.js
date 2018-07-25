@@ -4,6 +4,7 @@ var L12_Canvas;
     let objects = [];
     let nBird = 15;
     let nToxicBird = 3;
+    let catchedBirds = 0;
     function init(_event) {
         let canvas = document.getElementsByTagName("canvas")[0];
         L12_Canvas.crc2 = canvas.getContext("2d");
@@ -82,8 +83,9 @@ var L12_Canvas;
                 objects.splice(i, 1);
                 let birds = new L12_Canvas.Bird(Math.random() * (600 - 100) + 100, Math.random() * (1000 + 800) + 800);
                 objects.unshift(birds);
+                catchedBirds++;
                 if (i >= (nBird) && i <= (nBird + nToxicBird)) {
-                    alert("Ohje, der war wohl giftig... willst du's nochmal veruschen?");
+                    alert("Ohje, die war wohl giftig... du hast " + catchedBirds + " Tauben gesammelt! Willst du's nochmal veruschen?");
                     location.reload(true);
                 }
             }

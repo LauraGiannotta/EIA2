@@ -6,6 +6,8 @@ namespace L12_Canvas {
     export let imageData: ImageData;
     export let crc2: CanvasRenderingContext2D;
     export let kaetzchen: Katze;
+    let catchedBirds: number = 0;
+
 
 
 
@@ -67,9 +69,9 @@ namespace L12_Canvas {
                     break;
             }
         });
-        
-        
-                //Anonyme Funktion für Touch auf dem Handy
+
+
+        //Anonyme Funktion für Touch auf dem Handy
         document.querySelector("body").addEventListener("touchstart", function(e: TouchEvent) {
 
             const canvasTouchPosX = e.touches.item(0).clientX - document.querySelector('canvas').clientLeft;
@@ -91,12 +93,12 @@ namespace L12_Canvas {
 
         crc2.putImageData(imageData, 0, 0);
 
-}
-        
-        
-        
+    }
 
-    
+
+
+
+
     animate();
 
 
@@ -123,8 +125,9 @@ namespace L12_Canvas {
                 objects.splice(i, 1);
                 let birds: Bird = new Bird(Math.random() * (600 - 100) + 100, Math.random() * (1000 + 800) + 800);
                 objects.unshift(birds);
+                catchedBirds++;
                 if (i >= (nBird) && i <= (nBird + nToxicBird)) {
-                    alert("Ohje, der war wohl giftig... willst du's nochmal veruschen?");
+                    alert("Ohje, die war wohl giftig... du hast " + catchedBirds + " Tauben gesammelt! Willst du's nochmal veruschen?");
                     location.reload(true)
                 }
             }
