@@ -2,23 +2,16 @@ html {
 	text-align: center;
 	overflow-y: scroll;
 	overflow-x: hidden;
-
 }
 
 body {
-	background-color: #f2dfae;
+	background-color: #EFE3C0;
 
 }
 canvas {
 	border: 5px dotted;
 	border-color: #c53a5e;
+	max-width: 90%;
+	margin: 5%;
 }
 
-
-/*	width: 100%;
-	margin: 0;
-	
-	
-		margin-left: 25%;
-	max-width: 50%;
-	*/
